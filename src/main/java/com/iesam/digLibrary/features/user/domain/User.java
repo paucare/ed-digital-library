@@ -1,6 +1,8 @@
 package com.iesam.digLibrary.features.user.domain;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
     public final String dni;
     public final String name;
     public final String surname;
