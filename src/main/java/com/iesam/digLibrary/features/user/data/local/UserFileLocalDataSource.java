@@ -17,10 +17,6 @@ import java.util.Scanner;
 
 public class UserFileLocalDataSource {
     private String nameFile = "users.txt";
-    private static UserFileLocalDataSource instance = null;
-    private UserFileLocalDataSource(){
-
-    }
 
     private Gson gson = new Gson();
 
@@ -91,14 +87,5 @@ public class UserFileLocalDataSource {
             }
         }
         saveList(newList);
-    }
-    public static UserFileLocalDataSource getInstance()
-    {
-        if (instance == null) {
-
-            instance = new UserFileLocalDataSource();
-        }
-
-        return instance;
     }
 }

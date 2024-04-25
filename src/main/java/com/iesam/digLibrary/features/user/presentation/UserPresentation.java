@@ -26,7 +26,7 @@ public class UserPresentation {
         String address = sc.nextLine();
 
         User user = new User(dni,name,surname,phoneNumber,address);
-        SaveUserUseCase useCase = new SaveUserUseCase(new UserDataRepository(UserFileLocalDataSource.getInstance()));
+        SaveUserUseCase useCase = new SaveUserUseCase(new UserDataRepository(new UserFileLocalDataSource()));
         useCase.execute(user);
         System.out.println("Se ha guardado el usuario: " + user.name);
     }
