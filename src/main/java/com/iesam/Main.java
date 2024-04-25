@@ -12,7 +12,6 @@ public class Main {
     }
     public static void menu() {
 
-
         int option = -1;
 
         do {
@@ -34,6 +33,7 @@ public class Main {
             return;
             case 2: UserPresentation.deleteUserByDni();
             System.out.println("Siguiente operación");
+
             default:
                 return;
         }

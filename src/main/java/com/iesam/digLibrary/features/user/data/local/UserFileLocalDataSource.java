@@ -83,6 +83,7 @@ public class UserFileLocalDataSource {
         List<User> models = findAll();
         for (User model : models) {
             if (!model.dni.equals(modelId)) {
+
                 newList.add(model);
             }
         }
