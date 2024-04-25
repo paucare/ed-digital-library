@@ -15,5 +15,4 @@ public class UserDataRepository implements UserRepository {
     public void saveUser(User user) {
         localDataSource.save(user);
     }
-
 }
