@@ -6,11 +6,10 @@ import com.iesam.digLibrary.features.user.domain.*;
 import java.util.Scanner;
 
 public class UserPresentation {
-
+  
+    static Scanner sc = new Scanner(System.in);
 
     public static void showUserForm(){
-
-        Scanner sc = new Scanner(System.in);
 
         System.out.println("Formulario de nuevo usuario");
         System.out.println("Introduce el dni: ");
@@ -29,6 +28,14 @@ public class UserPresentation {
         SaveUserUseCase useCase = new SaveUserUseCase(new UserDataRepository(new UserFileLocalDataSource()));
         useCase.execute(user);
         System.out.println("Se ha guardado el usuario: " + user.name);
+    }
+
+    public static void deleteUserByDni(){
+        System.out.println("Introduce el dni del usuario a borrar: ");
+        String dni = sc.nextLine();
+        DeleteUserUseCase useCase = new DeleteUserUseCase(new UserDataRepository(new UserFileLocalDataSource()));
+        useCase.execute(dni);
+        System.out.println("Se ha borrado el usuario con dni " + dni + " con exito");
     }
 
 }

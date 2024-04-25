@@ -12,13 +12,13 @@ public class Main {
     }
     public static void menu() {
 
-
         int option = -1;
 
         do {
             System.out.println("Menu");
             System.out.println("0. Salir");
             System.out.println("1. Dar de alta un usuario");
+            System.out.println("2. Dar de baja un usuario");
             option = sc.nextInt();
             if (option > 0) {
                 menuHandler(option);
@@ -31,6 +31,8 @@ public class Main {
             case 1: UserPresentation.showUserForm();
             System.out.println("Siguiente operación");
             return;
+            case 2: UserPresentation.deleteUserByDni();
+            System.out.println("Siguiente operación");
 
             default:
                 return;
