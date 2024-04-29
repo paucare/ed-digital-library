@@ -38,4 +38,24 @@ public class UserPresentation {
         System.out.println("Se ha borrado el usuario con dni " + dni + " con exito");
     }
 
+    public static void updateUser(){
+            System.out.println("Formulario para editar datos de usuario");
+            System.out.println("Introduce el dni: ");
+            String dni = sc.nextLine();
+            System.out.println("Introduce el nombre: ");
+            String name = sc.nextLine();
+            System.out.println("Introduce el apellido: ");
+            String surname = sc.nextLine();
+            System.out.println("Introduce el telefono: ");
+            int phoneNumber = sc.nextInt();
+            sc.nextLine();
+            System.out.println("Introduce la dirección: ");
+            String address = sc.nextLine();
+            User user = new User(dni,name,surname,phoneNumber,address);
+            UpdateUserUseCase useCase = new UpdateUserUseCase(new UserDataRepository(new UserFileLocalDataSource()));
+            useCase.execute(user);
+            System.out.println("");
+
+    }
+
 }
