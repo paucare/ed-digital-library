@@ -20,6 +20,9 @@ public class Main {
             System.out.println("1. Dar de alta un usuario");
             System.out.println("2. Dar de baja un usuario");
             System.out.println("3. Actualizar un usuario");
+            System.out.println("4. Dar de alta un recurso");
+            System.out.println("5. Dar de baja un recurso");
+            System.out.println("6. Consultar lista de recursos");
             option = sc.nextInt();
             if (option > 0) {
                 menuHandler(option);
