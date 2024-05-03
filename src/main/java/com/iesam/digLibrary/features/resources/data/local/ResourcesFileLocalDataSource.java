@@ -14,8 +14,8 @@ import java.util.Objects;
 import java.util.Scanner;
 
 
-public class ResourcesLocalFileDataSource {
-        private String nameFile = "demo.txt";
+public class ResourcesFileLocalDataSource {
+        private String nameFile = "resources.txt";
 
         private Gson gson = new Gson();
 
