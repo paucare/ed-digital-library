@@ -30,4 +30,9 @@ public class ResourcesDataRepository implements ResourcesRepository {
     public List<Resources> getAllResources() {
         return localDataSource.findAll();
     }
+
+    @Override
+    public Resources getResourceById(int id) {
+        return localDataSource.findById(id);
+    }
 }

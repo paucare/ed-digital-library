@@ -44,7 +44,7 @@ public class ResourcesFileLocalDataSource {
             }
         }
 
-        public Resources findById(String id) {
+        public Resources findById(int id) {
             List<Resources> models = findAll();
             for (Resources model : models) {
                 if (Objects.equals(model.id, id)) {
