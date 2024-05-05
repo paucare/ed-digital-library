@@ -88,4 +88,27 @@ public class LoanFileLocalDataSource {
         }
         saveList(newList);
     }
+
+    public List<Loan> getActiveLoans() {
+        List <Loan>  Loans= findAll();
+        List<Loan> activeLoans = new ArrayList<>();
+        for(Loan element : Loans){
+            if(element.isActive()) {
+                activeLoans.add(element);
+            }
+        }
+        return activeLoans;
+    }
+    
+    public List<Loan> getFinishedLoans(){
+        List <Loan>  Loans= findAll();
+        List<Loan> finishedLoans = new ArrayList<>();
+        for(Loan element : Loans){
+            if(!element.isActive()) {
+                finishedLoans.add(element);
+            }
+        }
+        return finishedLoans;
+    }
+
 }

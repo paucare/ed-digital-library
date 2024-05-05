@@ -6,7 +6,7 @@ public class GetResourceByIdUseCase {
     public GetResourceByIdUseCase(ResourcesRepository repository) {
         this.repository = repository;
     }
-    public Resources getResourceById(int id){
-        return getResourceById(id);
+    public Resources execute(int id){
+        return repository.getResourceById(id);
     }
 }

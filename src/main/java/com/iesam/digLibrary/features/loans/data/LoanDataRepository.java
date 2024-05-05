@@ -29,25 +29,11 @@ public class LoanDataRepository implements LoanRepository {
 
     @Override
     public List<Loan> getActiveLoans() {
-        List <Loan>  Loans= localDataSource.findAll();
-        List<Loan> activeLoans = new ArrayList<>();
-        for(Loan element : Loans){
-           if(element.returnDate != null) {
-                activeLoans.add(element);
-            }
-        }
-        return activeLoans;
+        return localDataSource.getActiveLoans();
     }
 
     @Override
     public List<Loan> getFinishedLoans() {
-        List <Loan>  Loans= localDataSource.findAll();
-        List<Loan> finishedLoans = new ArrayList<>();
-        for(Loan element : Loans){
-            if(element.returnDate == null) {
-                finishedLoans.add(element);
-            }
-        }
-        return finishedLoans;
+       return localDataSource.getFinishedLoans();
     }
 }
