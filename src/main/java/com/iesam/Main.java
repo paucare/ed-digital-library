@@ -3,8 +3,8 @@ import java.util.Scanner;
 
 import com.iesam.digLibrary.features.loans.presentation.LoanPresentation;
 import com.iesam.digLibrary.features.resources.presentation.ResourcesPresentation;
-import com.iesam.digLibrary.features.user.domain.User;
 import com.iesam.digLibrary.features.user.presentation.UserPresentation;
+
 
 
 public class Main {

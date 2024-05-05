@@ -8,6 +8,7 @@ import java.util.Date;
 public class Loan {
     public final int loanId;
     public final Resources resource;
+
     public final User user;
     public final Date loanDate;
     public final Date returnDate; //Nullable
@@ -21,10 +22,13 @@ public class Loan {
         this.returnDate = returnDate;
     }
 
-    public boolean isActive() {
+    /*public boolean isActive() {
         Date currentDate = new Date();
         return returnDate == null || returnDate.after(currentDate);
+    }*/
+    public boolean isActive() {
+        Date currentDate = new Date();
+        return returnDate == null || returnDate.compareTo(currentDate) > 0 ;
     }
-
 
 }

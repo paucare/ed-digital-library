@@ -7,17 +7,15 @@ import com.iesam.digLibrary.features.loans.domain.*;
 import com.iesam.digLibrary.features.resources.data.ResourcesDataRepository;
 import com.iesam.digLibrary.features.resources.data.local.ResourcesFileLocalDataSource;
 import com.iesam.digLibrary.features.resources.domain.GetResourceByIdUseCase;
-import com.iesam.digLibrary.features.resources.domain.GetResourcesUseCase;
 import com.iesam.digLibrary.features.resources.domain.Resources;
 import com.iesam.digLibrary.features.user.data.UserDataRepository;
 import com.iesam.digLibrary.features.user.data.local.UserFileLocalDataSource;
-import com.iesam.digLibrary.features.user.domain.DeleteUserUseCase;
 import com.iesam.digLibrary.features.user.domain.GetUserByIdUseCase;
 import com.iesam.digLibrary.features.user.domain.User;
+import com.iesam.digLibrary.features.loans.domain.Loan;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
@@ -27,7 +25,6 @@ public class LoanPresentation {
     static Scanner sc = new Scanner(System.in);
     public static void showLoanForm(){
 
-        //DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
 
         System.out.println("Formulario de nuevo prestamo");
@@ -81,7 +78,7 @@ public class LoanPresentation {
         List<Loan> ListaActivos= useCase.execute();
         for(Loan element : ListaActivos){
             System.out.println("ID | Usuario | Recurso | Fecha de Prestamo | Fecha de devolucion");
-            System.out.println(element.loanId + " | " + element.user + " | " + element.resource + " | " + element.loanDate + " | " + element.returnDate + " | ");
+            System.out.println(element.loanId + " | " + element.user.name + " | " + element.resource.name + " | " + element.loanDate + " | " + element.returnDate + " | ");
         }
     }
     public static void getFinishedLoans(){
@@ -90,7 +87,7 @@ public class LoanPresentation {
         List<Loan> ListaFinalizados= useCase.execute();
         for(Loan element : ListaFinalizados){
             System.out.println("ID | Usuario | Recurso | Fecha de Prestamo | Fecha de devolucion");
-            System.out.println(element.loanId + " | " + element.user + " | " + element.resource + " | " + element.loanDate + " | " + element.returnDate + " | ");
+            System.out.println(element.loanId + " | " + element.user.name + " | " + element.resource.name + " | " + element.loanDate + " | " + element.returnDate + " | ");
         }
     }
 }
