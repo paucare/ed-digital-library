@@ -4,10 +4,11 @@ package com.iesam.digLibrary.features.loans.presentation;
 import com.iesam.digLibrary.features.loans.data.LoanDataRepository;
 import com.iesam.digLibrary.features.loans.data.local.LoanFileLocalDataSource;
 import com.iesam.digLibrary.features.loans.domain.*;
-import com.iesam.digLibrary.features.resources.data.ResourcesDataRepository;
-import com.iesam.digLibrary.features.resources.data.local.ResourcesFileLocalDataSource;
-import com.iesam.digLibrary.features.resources.domain.GetResourceByIdUseCase;
-import com.iesam.digLibrary.features.resources.domain.Resources;
+import com.iesam.digLibrary.features.resources.books.data.BooksDataRepository;
+import com.iesam.digLibrary.features.resources.books.data.local.BooksFileLocalDataSource;
+import com.iesam.digLibrary.features.resources.books.domain.Books;
+import com.iesam.digLibrary.features.resources.books.domain.GetBookByIdUseCase;
+import com.iesam.digLibrary.features.resources.Resources;
 import com.iesam.digLibrary.features.user.data.UserDataRepository;
 import com.iesam.digLibrary.features.user.data.local.UserFileLocalDataSource;
 import com.iesam.digLibrary.features.user.domain.GetUserByIdUseCase;
@@ -54,12 +55,12 @@ public class LoanPresentation {
         }
 
         GetUserByIdUseCase useCaseUser = new GetUserByIdUseCase(new UserDataRepository(new UserFileLocalDataSource()));
-        GetResourceByIdUseCase useCaseResource = new GetResourceByIdUseCase(new ResourcesDataRepository(new ResourcesFileLocalDataSource()));
+        GetBookByIdUseCase useCaseResource = new GetBookByIdUseCase(new BooksDataRepository(new BooksFileLocalDataSource()));
 
-        Resources selectedResource = useCaseResource.execute(resourceId);
+        Books selectedBook = useCaseResource.execute(resourceId);
         User selectedUser = useCaseUser.execute(userId);
 
-        Loan loan = new Loan(id,selectedResource,selectedUser,loanDate,returnDate);
+        Loan loan = new Loan(id,selectedBook,selectedUser,loanDate,returnDate);
         SaveLoanUseCase useCase = new SaveLoanUseCase(new LoanDataRepository(new LoanFileLocalDataSource()));
         useCase.execute(loan);
         System.out.println("Se ha creado el prestamo con ID: " + loan.loanId);

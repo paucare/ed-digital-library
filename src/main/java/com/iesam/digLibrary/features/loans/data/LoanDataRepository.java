@@ -3,9 +3,7 @@ package com.iesam.digLibrary.features.loans.data;
 import com.iesam.digLibrary.features.loans.data.local.LoanFileLocalDataSource;
 import com.iesam.digLibrary.features.loans.domain.Loan;
 import com.iesam.digLibrary.features.loans.domain.LoanRepository;
-import com.iesam.digLibrary.features.resources.domain.Resources;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class LoanDataRepository implements LoanRepository {

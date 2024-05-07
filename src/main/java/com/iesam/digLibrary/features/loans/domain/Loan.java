@@ -1,6 +1,6 @@
 package com.iesam.digLibrary.features.loans.domain;
 
-import com.iesam.digLibrary.features.resources.domain.Resources;
+import com.iesam.digLibrary.features.resources.Resources;
 import com.iesam.digLibrary.features.user.domain.User;
 
 import java.util.Date;

@@ -3,7 +3,7 @@ package com.iesam.digLibrary.features.loans.data.local;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.iesam.digLibrary.features.loans.domain.Loan;
-import com.iesam.digLibrary.features.resources.domain.Resources;
+import com.iesam.digLibrary.features.resources.Resources;
 
 import java.io.File;
 import java.io.FileNotFoundException;
