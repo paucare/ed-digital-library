@@ -27,7 +27,7 @@ public class LoanPresentation {
     static Scanner sc = new Scanner(System.in);
     public static void showLoanForm(){
 
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+        //SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
 
         System.out.println("Formulario de nuevo prestamo");
         System.out.println("Introduce el id del prestamo: ");
@@ -39,21 +39,25 @@ public class LoanPresentation {
         System.out.println("Introduce el id del usuario: ");
         String userId = sc.nextLine();
         System.out.println("Introduce la fecha de prestamo: ");
+        String loanDate = sc.nextLine();
+        /*
         String stringLoanDate = sc.nextLine();
-        Date loanDate = null;
+        String loanDate = null;
         try {
             loanDate = formatter.parse(stringLoanDate);
         } catch (ParseException e) {
             e.printStackTrace();
-        }
+        }*/
         System.out.println("Introduce la fecha de devolucion: ");
+        String returnDate = sc.nextLine();
+        /*
         String stringReturnDate = sc.nextLine();
-        Date returnDate = null;
+        String returnDate = null;
         try {
             returnDate = formatter.parse(stringReturnDate);
         } catch (ParseException e) {
             e.printStackTrace();
-        }
+        }*/
 
         GetUserByIdUseCase useCaseUser = new GetUserByIdUseCase(new UserDataRepository(new UserFileLocalDataSource()));
         GetBookByIdUseCase useCaseResource = new GetBookByIdUseCase(new BooksDataRepository(new BooksFileLocalDataSource()));

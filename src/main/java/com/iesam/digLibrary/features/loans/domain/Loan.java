@@ -10,11 +10,11 @@ public class Loan {
     public final Resources resource;
 
     public final User user;
-    public final Date loanDate;
-    public final Date returnDate; //Nullable
+    public final String loanDate;
+    public final String returnDate; //Nullable
 
 
-    public Loan(int loanId, Resources resource, User user, Date loanDate, Date returnDate) {
+    public Loan(int loanId, Resources resource, User user, String loanDate, String returnDate) {
         this.loanId = loanId;
         this.resource = resource;
         this.user = user;
@@ -24,11 +24,12 @@ public class Loan {
 
     /*public boolean isActive() {
         Date currentDate = new Date();
-        return returnDate == null || returnDate.after(currentDate);
+        return returnDate == null || returnDate.compareTo(currentDate) > 0 ;
     }*/
+
     public boolean isActive() {
         Date currentDate = new Date();
-        return returnDate == null || returnDate.compareTo(currentDate) > 0 ;
+        return returnDate != null;
     }
 
 }
