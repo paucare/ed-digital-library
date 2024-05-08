@@ -1,6 +1,8 @@
-package com.iesam.digLibrary.features.resources.domain;
+package com.iesam.digLibrary.features.resources.books.domain;
 
-public class Books extends Resources{
+import com.iesam.digLibrary.features.resources.domain.Resources;
+
+public class Books extends Resources {
 
     public final int extension;
     public Books(int id, String name, int year, String synopsis, int extension) {

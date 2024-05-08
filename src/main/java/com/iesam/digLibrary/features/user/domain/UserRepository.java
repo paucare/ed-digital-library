@@ -6,6 +6,7 @@ public interface UserRepository {
     public void deleteUser(String dni);
 
     public void updateUser(User user);
+    public User getUserById(String id);
 }
 
 

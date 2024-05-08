@@ -1,9 +1,10 @@
 package com.iesam;
 import java.util.Scanner;
 
+import com.iesam.digLibrary.features.loans.presentation.LoanPresentation;
 import com.iesam.digLibrary.features.resources.presentation.ResourcesPresentation;
-import com.iesam.digLibrary.features.user.domain.User;
 import com.iesam.digLibrary.features.user.presentation.UserPresentation;
+
 
 
 public class Main {
@@ -11,6 +12,7 @@ public class Main {
     public static void main(String[] args) {
         menu();
     }
+
     public static void menu() {
 
         int option = -1;
@@ -24,6 +26,10 @@ public class Main {
             System.out.println("4. Dar de alta un recurso");
             System.out.println("5. Dar de baja un recurso");
             System.out.println("6. Consultar lista de recursos");
+            System.out.println("7. Crear un prestamo");
+            System.out.println("8. Borrar un prestamo");
+            System.out.println("9. Listado de prestamos activos");
+            System.out.println("10. Listado de prestamos finalizados");
             option = sc.nextInt();
             if (option > 0) {
                 menuHandler(option);
@@ -49,6 +55,18 @@ public class Main {
             System.out.println("Siguiente operación");
             return;
             case 6: ResourcesPresentation.getAllRegisters();
+            System.out.println("Siguiente operación");
+            return;
+            case 7: LoanPresentation.showLoanForm();
+            System.out.println("Siguiente operación");
+            return;
+            case 8: LoanPresentation.deleteLoan();
+            System.out.println("Siguiente operación");
+            return;
+            case 9: LoanPresentation.getActiveLoans();
+            System.out.println("Siguiente operación");
+            return;
+            case 10: LoanPresentation.getFinishedLoans();
             System.out.println("Siguiente operación");
             return;
 
