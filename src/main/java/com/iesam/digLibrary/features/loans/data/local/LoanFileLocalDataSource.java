@@ -20,7 +20,7 @@ public class LoanFileLocalDataSource {
 
     private Gson gson = new Gson();
 
-    private final Type typeList = new TypeToken<ArrayList<Resources>>() {
+    private final Type typeList = new TypeToken<ArrayList<Loan>>() {
     }.getType();
 
     public void save(Loan model) {
