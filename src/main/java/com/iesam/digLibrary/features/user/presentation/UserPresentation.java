@@ -39,9 +39,11 @@ public class UserPresentation {
     }
 
     public static void updateUser(){
+
+            System.out.println("Introduce el ID del usuario a modificar");
+            String unchangedId = sc.nextLine();
+
             System.out.println("Formulario para editar datos de usuario");
-            System.out.println("Introduce el dni: ");
-            String dni = sc.nextLine();
             System.out.println("Introduce el nombre: ");
             String name = sc.nextLine();
             System.out.println("Introduce el apellido: ");
@@ -51,9 +53,9 @@ public class UserPresentation {
             sc.nextLine();
             System.out.println("Introduce la dirección: ");
             String address = sc.nextLine();
-            User user = new User(dni,name,surname,phoneNumber,address);
+            User updatedUser = new User(unchangedId,name,surname,phoneNumber,address);
             UpdateUserUseCase useCase = new UpdateUserUseCase(new UserDataRepository(new UserFileLocalDataSource()));
-            useCase.execute(user);
+            useCase.execute(updatedUser);
             System.out.println("");
 
     }
