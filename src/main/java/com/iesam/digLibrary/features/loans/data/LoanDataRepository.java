@@ -20,11 +20,6 @@ public class LoanDataRepository implements LoanRepository {
 
     }
     @Override
-    public void endLoan(Loan loan){
-        deleteLoan(loan.loanId);
-        saveLoan(loan);
-    }
-    @Override
     public Loan getLoanById(int id){
         return localDataSource.findById(id);
     }

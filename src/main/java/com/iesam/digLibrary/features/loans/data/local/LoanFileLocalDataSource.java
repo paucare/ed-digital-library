@@ -109,5 +109,4 @@ public class LoanFileLocalDataSource {
         }
         return finishedLoans;
     }
-
 }

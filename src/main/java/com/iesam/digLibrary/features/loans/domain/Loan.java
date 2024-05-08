@@ -28,7 +28,6 @@ public class Loan {
     }*/
 
     public boolean isActive() {
-        Date currentDate = new Date();
         return returnDate != null;
     }
 
