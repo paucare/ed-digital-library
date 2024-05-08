@@ -1,4 +1,4 @@
-package com.iesam.digLibrary.features.resources;
+package com.iesam.digLibrary.features.resources.domain;
 
 public class Resources {
     public final int id;

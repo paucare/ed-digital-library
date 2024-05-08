@@ -1,7 +1,5 @@
 package com.iesam.digLibrary.features.resources.books.domain;
 
-import com.iesam.digLibrary.features.resources.Resources;
-
 import java.util.List;
 
 public interface BooksRepository {

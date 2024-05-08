@@ -1,6 +1,6 @@
 package com.iesam.digLibrary.features.resources.books.domain;
 
-import com.iesam.digLibrary.features.resources.Resources;
+import com.iesam.digLibrary.features.resources.domain.Resources;
 
 public class Books extends Resources {
 

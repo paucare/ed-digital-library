@@ -8,18 +8,13 @@ import com.iesam.digLibrary.features.resources.books.data.BooksDataRepository;
 import com.iesam.digLibrary.features.resources.books.data.local.BooksFileLocalDataSource;
 import com.iesam.digLibrary.features.resources.books.domain.Books;
 import com.iesam.digLibrary.features.resources.books.domain.GetBookByIdUseCase;
-import com.iesam.digLibrary.features.resources.Resources;
 import com.iesam.digLibrary.features.user.data.UserDataRepository;
 import com.iesam.digLibrary.features.user.data.local.UserFileLocalDataSource;
 import com.iesam.digLibrary.features.user.domain.GetUserByIdUseCase;
 import com.iesam.digLibrary.features.user.domain.User;
 import com.iesam.digLibrary.features.loans.domain.Loan;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 import java.util.Scanner;
 
 

@@ -2,7 +2,7 @@ package com.iesam;
 import java.util.Scanner;
 
 import com.iesam.digLibrary.features.loans.presentation.LoanPresentation;
-import com.iesam.digLibrary.features.resources.books.presentation.BooksPresentation;
+import com.iesam.digLibrary.features.resources.presentation.ResourcesPresentation;
 import com.iesam.digLibrary.features.user.presentation.UserPresentation;
 
 
@@ -48,13 +48,13 @@ public class Main {
             case 3: UserPresentation.updateUser();
             System.out.println("Siguiente operación");
             return;
-            case 4: BooksPresentation.showResourceForm();
+            case 4: ResourcesPresentation.showResourceForm();
             System.out.println("Siguiente operación");
             return;
-            case 5: BooksPresentation.deleteResourceById();
+            case 5: ResourcesPresentation.deleteResourceById();
             System.out.println("Siguiente operación");
             return;
-            case 6: BooksPresentation.getAllRegisters();
+            case 6: ResourcesPresentation.getAllRegisters();
             System.out.println("Siguiente operación");
             return;
             case 7: LoanPresentation.showLoanForm();

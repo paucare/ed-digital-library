@@ -1,14 +1,14 @@
-package com.iesam.digLibrary.features.resources.books.presentation;
+package com.iesam.digLibrary.features.resources.presentation;
 import java.util.List;
 import java.util.Scanner;
 
-import com.iesam.digLibrary.features.resources.Resources;
+import com.iesam.digLibrary.features.resources.domain.Resources;
 import com.iesam.digLibrary.features.resources.books.data.local.BooksFileLocalDataSource;
 import com.iesam.digLibrary.features.resources.books.domain.*;
 import com.iesam.digLibrary.features.resources.books.data.*;
 
 
-public class BooksPresentation {
+public class ResourcesPresentation {
     static Scanner sc = new Scanner(System.in);
     public static void showResourceForm(){
 
