@@ -28,6 +28,10 @@ public class LoanDataRepository implements LoanRepository {
     public void deleteLoan(int loanId) {
         localDataSource.delete(loanId);
     }
+    @Override
+    public void endLoan(Loan loan){
+        localDataSource.endLoan(loan.loanId, loan);
+    }
 
     @Override
     public List<Loan> getActiveLoans() {

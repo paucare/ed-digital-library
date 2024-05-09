@@ -15,6 +15,7 @@ public class LoansMenu extends Menu{
         System.out.println("0. Volver al menu principal");
         System.out.println("1. Dar de alta un prestamo");
         System.out.println("2. Borrar un prestamo");
+        System.out.println("3. Terminar un prestamo");
         System.out.println("4. Mostrar prestamos activos");
         System.out.println("5. Mostrar prestamos finalizados");
 
@@ -37,13 +38,16 @@ public class LoansMenu extends Menu{
                 System.out.println("Siguiente operación");
                 return;
             case 3:
-                LoanPresentation.getActiveLoans();
+                LoanPresentation.returnResourceToEndLoan();
                 System.out.println("Siguiente operación");
                 return;
             case 4:
-                LoanPresentation.getFinishedLoans();
+                LoanPresentation.getActiveLoans();
                 System.out.println("Siguiente operación");
                 return;
+            case 5:
+                LoanPresentation.getFinishedLoans();
+                System.out.println("Siguiente operación");
             default:
                 System.out.println("Opcion no valida. Intentalo de nuevo.");
                 break;

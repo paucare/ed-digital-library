@@ -74,6 +74,19 @@ public class LoanPresentation {
         useCase.execute(idLoan);
         System.out.println("Se ha borrado el prestamo con id: " + idLoan + " con exito");
     }
+    public static void returnResourceToEndLoan(){
+        System.out.println("Introduce el ID del prestamo cuyo recurso han devuelto: ");
+        int unchangedId = sc.nextInt();
+        sc.nextLine();
+        GetLoanById getLoan = new GetLoanById(new LoanDataRepository(new LoanFileLocalDataSource()));
+        Loan selectedLoan = getLoan.execute(unchangedId);
+
+        Loan finishedLoan = new Loan(unchangedId,selectedLoan.resource,selectedLoan.user,selectedLoan.loanDate,"");
+        EndLoanUseCase useCase = new EndLoanUseCase(new LoanDataRepository(new LoanFileLocalDataSource()));
+        useCase.execute(finishedLoan);
+        System.out.println("¡Gracias por devolver el recurso!");
+
+    }
     public static void getActiveLoans(){
         System.out.println("A continuación se muestra una lista de los prestamos activos en nuestra biblioteca");
         GetActiveLoansUseCase useCase = new GetActiveLoansUseCase(new LoanDataRepository(new LoanFileLocalDataSource()));
