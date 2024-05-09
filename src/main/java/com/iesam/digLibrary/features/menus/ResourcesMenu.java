@@ -17,6 +17,7 @@ public class ResourcesMenu extends Menu {
         System.out.println("2. Dar de baja un recurso");
         System.out.println("3. Actualizar un recurso");
         System.out.println("4. Mostrar lista de recursos");
+
         System.out.print("Introduce una opcion: ");
     }
 
@@ -40,6 +41,7 @@ public class ResourcesMenu extends Menu {
                 System.out.println("Siguiente operación");
                 return;
             case 4:
+
                 ResourcesPresentation.getAllRegisters();
                 System.out.println("Siguiente operación");
             default:

@@ -17,6 +17,7 @@ public class LoansMenu extends Menu{
         System.out.println("2. Borrar un prestamo");
         System.out.println("4. Mostrar prestamos activos");
         System.out.println("5. Mostrar prestamos finalizados");
+
         System.out.print("Introduce una opcion: ");
     }
 
@@ -35,7 +36,6 @@ public class LoansMenu extends Menu{
                 LoanPresentation.deleteLoan();
                 System.out.println("Siguiente operación");
                 return;
-
             case 3:
                 LoanPresentation.getActiveLoans();
                 System.out.println("Siguiente operación");
