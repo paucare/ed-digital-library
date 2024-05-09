@@ -11,6 +11,8 @@ public class MainMenu extends Menu {
     @Override
     void display() {
 
+            ConsoleUtils.clearConsole();
+
             System.out.println("* Menu principal * ");
             System.out.println("0. Salir");
             System.out.println("1. Gestión de usuarios");

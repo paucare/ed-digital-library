@@ -7,6 +7,10 @@ public interface LoanRepository {
     public void deleteLoan(int loanId);
     public void endLoan(Loan loan);
     public Loan getLoanById(int id);
+    public List<Loan> getLoans();
+    /*
     public List<Loan> getActiveLoans();
     public List<Loan> getFinishedLoans();
+
+     */
 }

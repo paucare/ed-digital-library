@@ -11,6 +11,7 @@ public class LoansMenu extends Menu{
 
     @Override
     void display() {
+        ConsoleUtils.clearConsole();
         System.out.println("P. Gestion de prestamos .P");
         System.out.println("0. Volver al menu principal");
         System.out.println("1. Dar de alta un prestamo");
@@ -48,6 +49,7 @@ public class LoansMenu extends Menu{
             case 5:
                 LoanPresentation.getFinishedLoans();
                 System.out.println("Siguiente operación");
+                return;
             default:
                 System.out.println("Opcion no valida. Intentalo de nuevo.");
                 break;

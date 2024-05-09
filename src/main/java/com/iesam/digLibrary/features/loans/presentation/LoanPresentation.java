@@ -11,7 +11,6 @@ import com.iesam.digLibrary.features.resources.books.domain.GetBookByIdUseCase;
 import com.iesam.digLibrary.features.user.data.UserDataRepository;
 import com.iesam.digLibrary.features.user.data.local.UserFileLocalDataSource;
 import com.iesam.digLibrary.features.user.domain.GetUserByIdUseCase;
-import com.iesam.digLibrary.features.user.domain.UpdateUserUseCase;
 import com.iesam.digLibrary.features.user.domain.User;
 import com.iesam.digLibrary.features.loans.domain.Loan;
 
@@ -44,7 +43,7 @@ public class LoanPresentation {
         } catch (ParseException e) {
             e.printStackTrace();
         }*/
-        System.out.println("Introduce la fecha de devolucion: ");
+        System.out.println("Introduce la fecha esperada de devolucion: ");
         String returnDate = sc.nextLine();
         /*
         String stringReturnDate = sc.nextLine();
@@ -61,7 +60,7 @@ public class LoanPresentation {
         Books selectedBook = useCaseResource.execute(resourceId);
         User selectedUser = useCaseUser.execute(userId);
 
-        Loan loan = new Loan(id,selectedBook,selectedUser,loanDate,returnDate);
+        Loan loan = new Loan(id,selectedBook,selectedUser,loanDate,returnDate,null);
         SaveLoanUseCase useCase = new SaveLoanUseCase(new LoanDataRepository(new LoanFileLocalDataSource()));
         useCase.execute(loan);
         System.out.println("Se ha creado el prestamo con ID: " + loan.loanId);
@@ -78,12 +77,8 @@ public class LoanPresentation {
         System.out.println("Introduce el ID del prestamo cuyo recurso han devuelto: ");
         int unchangedId = sc.nextInt();
         sc.nextLine();
-        GetLoanById getLoan = new GetLoanById(new LoanDataRepository(new LoanFileLocalDataSource()));
-        Loan selectedLoan = getLoan.execute(unchangedId);
-
-        Loan finishedLoan = new Loan(unchangedId,selectedLoan.resource,selectedLoan.user,selectedLoan.loanDate,"");
         EndLoanUseCase useCase = new EndLoanUseCase(new LoanDataRepository(new LoanFileLocalDataSource()));
-        useCase.execute(finishedLoan);
+        useCase.execute(unchangedId);
         System.out.println("¡Gracias por devolver el recurso!");
 
     }
@@ -93,7 +88,7 @@ public class LoanPresentation {
         List<Loan> ListaActivos= useCase.execute();
         for(Loan element : ListaActivos){
             System.out.println("ID | Usuario | Recurso | Fecha de Prestamo | Fecha de devolucion");
-            System.out.println(element.loanId + " | " + element.user.name + " | " + element.resource.name + " | " + element.loanDate + " | " + element.returnDate + " | ");
+            System.out.println(element.loanId + " | " + element.user.name + " | " + element.resource.name + " | " + element.loanDate + " | " + element.expectedDate);
         }
     }
     public static void getFinishedLoans(){

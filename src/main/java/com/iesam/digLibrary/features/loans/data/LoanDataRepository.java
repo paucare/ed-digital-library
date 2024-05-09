@@ -34,6 +34,12 @@ public class LoanDataRepository implements LoanRepository {
     }
 
     @Override
+    public List<Loan> getLoans() {
+        return localDataSource.findAll();
+    }
+
+    /*
+    @Override
     public List<Loan> getActiveLoans() {
         return localDataSource.getActiveLoans();
     }
@@ -42,4 +48,6 @@ public class LoanDataRepository implements LoanRepository {
     public List<Loan> getFinishedLoans() {
        return localDataSource.getFinishedLoans();
     }
+
+     */
 }
