@@ -87,14 +87,4 @@ public class LoanFileLocalDataSource {
         }
         saveList(newList);
     }
-    public void endLoan(int modelId,Loan model){
-        List<Loan> newList = new ArrayList<>();
-        List<Loan> models1 = findAll();
-        for (Loan element : models1) {
-            if (element.loanId != modelId) {
-                newList.add(model);
-            }
-        }
-        save(model);
-    }
 }

@@ -28,26 +28,9 @@ public class LoanDataRepository implements LoanRepository {
     public void deleteLoan(int loanId) {
         localDataSource.delete(loanId);
     }
-    @Override
-    public void endLoan(Loan loan){
-        localDataSource.endLoan(loan.loanId, loan);
-    }
 
     @Override
     public List<Loan> getLoans() {
         return localDataSource.findAll();
     }
-
-    /*
-    @Override
-    public List<Loan> getActiveLoans() {
-        return localDataSource.getActiveLoans();
-    }
-
-    @Override
-    public List<Loan> getFinishedLoans() {
-       return localDataSource.getFinishedLoans();
-    }
-
-     */
 }
