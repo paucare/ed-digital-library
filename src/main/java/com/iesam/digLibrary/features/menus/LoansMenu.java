@@ -13,10 +13,11 @@ public class LoansMenu extends Menu{
     void display() {
         System.out.println("P. Gestion de prestamos .P");
         System.out.println("0. Volver al menu principal");
-        System.out.println("1. Dar de alta a un prestamo");
-        System.out.println("2. Dar de baja un prestamo");
-        System.out.println("3. Mostrar prestamos activos");
-        System.out.println("4. Mostrar prestamos finalizados");
+        System.out.println("1. Dar de alta un prestamo");
+        System.out.println("2. Borrar un prestamo");
+        System.out.println("4. Mostrar prestamos activos");
+        System.out.println("5. Mostrar prestamos finalizados");
+
         System.out.print("Introduce una opcion: ");
     }
 

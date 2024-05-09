@@ -11,6 +11,7 @@ import com.iesam.digLibrary.features.resources.books.domain.GetBookByIdUseCase;
 import com.iesam.digLibrary.features.user.data.UserDataRepository;
 import com.iesam.digLibrary.features.user.data.local.UserFileLocalDataSource;
 import com.iesam.digLibrary.features.user.domain.GetUserByIdUseCase;
+import com.iesam.digLibrary.features.user.domain.UpdateUserUseCase;
 import com.iesam.digLibrary.features.user.domain.User;
 import com.iesam.digLibrary.features.loans.domain.Loan;
 
@@ -88,7 +89,7 @@ public class LoanPresentation {
         List<Loan> ListaFinalizados= useCase.execute();
         for(Loan element : ListaFinalizados){
             System.out.println("ID | Usuario | Recurso | Fecha de Prestamo | Fecha de devolucion");
-            System.out.println(element.loanId + " | " + element.user.name + " | " + element.resource.name + " | " + element.loanDate + " | " + element.returnDate + " | ");
+            System.out.println(element.loanId + " | " + element.user.name + " | " + element.resource.name + " | " + element.loanDate + " | " + " Devuelto ");
         }
     }
 }

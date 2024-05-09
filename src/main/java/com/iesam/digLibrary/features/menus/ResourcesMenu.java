@@ -13,9 +13,11 @@ public class ResourcesMenu extends Menu {
     void display() {
         System.out.println("R. Gestion de recursos .R");
         System.out.println("0. Volver al menu principal");
-        System.out.println("1. Dar de alta a un recurso");
+        System.out.println("1. Dar de alta un recurso");
         System.out.println("2. Dar de baja un recurso");
-        System.out.println("3. Mostrar lista de recursos");
+        System.out.println("3. Actualizar un recurso");
+        System.out.println("4. Mostrar lista de recursos");
+
         System.out.print("Introduce una opcion: ");
     }
 
@@ -35,6 +37,11 @@ public class ResourcesMenu extends Menu {
                 System.out.println("Siguiente operación");
                 return;
             case 3:
+                ResourcesPresentation.updateBook();
+                System.out.println("Siguiente operación");
+                return;
+            case 4:
+
                 ResourcesPresentation.getAllRegisters();
                 System.out.println("Siguiente operación");
             default:

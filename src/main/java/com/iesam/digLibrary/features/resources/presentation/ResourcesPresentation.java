@@ -6,6 +6,10 @@ import com.iesam.digLibrary.features.resources.domain.Resources;
 import com.iesam.digLibrary.features.resources.books.data.local.BooksFileLocalDataSource;
 import com.iesam.digLibrary.features.resources.books.domain.*;
 import com.iesam.digLibrary.features.resources.books.data.*;
+import com.iesam.digLibrary.features.user.data.UserDataRepository;
+import com.iesam.digLibrary.features.user.data.local.UserFileLocalDataSource;
+import com.iesam.digLibrary.features.user.domain.UpdateUserUseCase;
+import com.iesam.digLibrary.features.user.domain.User;
 
 
 public class ResourcesPresentation {
@@ -38,6 +42,26 @@ public class ResourcesPresentation {
         DeleteBookUseCase useCase = new DeleteBookUseCase(new BooksDataRepository(new BooksFileLocalDataSource()));
         useCase.execute(id);
         System.out.println("Se ha borrado el recurso con id " + id + " con exito");
+    }
+    public static void updateBook(){
+        System.out.println("Introduce el ID del libro a modificar");
+        int unchangedId = sc.nextInt();
+
+        System.out.println("Formulario para editar datos de libro");
+        System.out.println("Introduce el nombre: ");
+        String name = sc.nextLine();
+        System.out.println("Introduce el año: ");
+        int year = sc.nextInt();
+        sc.nextLine();
+        System.out.println("Introduce la sinopsis: ");
+        String synopsis = sc.nextLine();
+        System.out.println("Introduce la extension: ");
+        int extension = sc.nextInt();
+        sc.nextLine();
+        Books updatedBook = new Books(unchangedId,name,year,synopsis,extension);
+        UpdateBookUseCase useCase = new UpdateBookUseCase(new BooksDataRepository(new BooksFileLocalDataSource()));
+        useCase.execute(updatedBook);
+        System.out.println("");
     }
 
     public static void getAllRegisters(){

@@ -44,7 +44,7 @@ public class LoanFileLocalDataSource {
         }
     }
 
-    public Loan findById(String id) {
+    public Loan findById(int id) {
         List<Loan> models = findAll();
         for (Loan model : models) {
             if (Objects.equals(model.loanId, id)) {
@@ -109,5 +109,4 @@ public class LoanFileLocalDataSource {
         }
         return finishedLoans;
     }
-
 }

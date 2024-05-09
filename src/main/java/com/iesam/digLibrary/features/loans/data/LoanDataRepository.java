@@ -19,6 +19,10 @@ public class LoanDataRepository implements LoanRepository {
         localDataSource.save(loan);
 
     }
+    @Override
+    public Loan getLoanById(int id){
+        return localDataSource.findById(id);
+    }
 
     @Override
     public void deleteLoan(int loanId) {
