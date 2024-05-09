@@ -9,7 +9,7 @@ public class EndLoanUseCase {
 
         public void execute(int loanId){
             Loan loan = repository.getLoanById(loanId);
-            Loan loanFinished = new Loan(loan.loanId, loan.resource, loan.user, loan.loanDate,loan.expectedDate ,null);
+            Loan loanFinished = new Loan(loan.loanId, loan.resource, loan.user, loan.loanDate,loan.expectedDate ,"Devuelto");
             repository.saveLoan(loan);
         }
     }

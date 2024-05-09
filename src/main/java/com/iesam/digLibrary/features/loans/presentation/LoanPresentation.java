@@ -97,7 +97,7 @@ public class LoanPresentation {
         List<Loan> ListaFinalizados= useCase.execute();
         for(Loan element : ListaFinalizados){
             System.out.println("ID | Usuario | Recurso | Fecha de Prestamo | Fecha de devolucion");
-            System.out.println(element.loanId + " | " + element.user.name + " | " + element.resource.name + " | " + element.loanDate + " | " + " Devuelto ");
+            System.out.println(element.loanId + " | " + element.user.name + " | " + element.resource.name + " | " + element.loanDate + " | " + element.returnedDate);
         }
     }
 }
