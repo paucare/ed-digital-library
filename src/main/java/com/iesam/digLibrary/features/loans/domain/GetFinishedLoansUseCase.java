@@ -1,5 +1,6 @@
 package com.iesam.digLibrary.features.loans.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GetFinishedLoansUseCase {
@@ -10,6 +11,13 @@ public class GetFinishedLoansUseCase {
     }
 
     public List<Loan> execute(){
-        return repository.getActiveLoans();
+        List <Loan>  Loans= repository.getLoans();
+        List<Loan> finishedLoans = new ArrayList<>();
+        for(Loan element : Loans){
+            if(!element.isActive()) {
+                finishedLoans.add(element);
+            }
+        }
+        return finishedLoans;
     }
 }

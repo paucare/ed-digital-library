@@ -10,6 +10,7 @@ public class UserMenu extends Menu{
     }
     @Override
     void display() {
+            ConsoleUtils.clearConsole();
             System.out.println("U. Gestion de usuario .U");
             System.out.println("0. Volver al menu principal");
             System.out.println("1. Dar de alta a un usuario");

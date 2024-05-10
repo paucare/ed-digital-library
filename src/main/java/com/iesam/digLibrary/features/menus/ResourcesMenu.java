@@ -11,6 +11,7 @@ public class ResourcesMenu extends Menu {
 
     @Override
     void display() {
+        ConsoleUtils.clearConsole();
         System.out.println("R. Gestion de recursos .R");
         System.out.println("0. Volver al menu principal");
         System.out.println("1. Dar de alta un recurso");
