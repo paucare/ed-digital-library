@@ -29,9 +29,10 @@ public class LoanPresentation {
         Date currentDate = new Date();
 
         System.out.println("Formulario de nuevo prestamo");
-        System.out.println("Introduce el id del prestamo: ");
+        /* System.out.println("Introduce el id del prestamo: ");
         int id = sc.nextInt();
         sc.nextLine();
+        */
         System.out.println("Introduce el id del recurso: ");
         int resourceId = sc.nextInt();
         sc.nextLine();
@@ -40,7 +41,7 @@ public class LoanPresentation {
 
         Date loanDate = currentDate;
         Date expectedDate = Loan.calculateExpectedDate(loanDate);
-        System.out.println("Se ha creado el prestamo con ID: " + id);
+
         System.out.println("Fecha de prestamo: " + formatter.format(loanDate));
         System.out.println("Fecha esperada de devolucion: " + formatter.format(expectedDate));
 
@@ -51,9 +52,10 @@ public class LoanPresentation {
         Books selectedBook = useCaseResource.execute(resourceId);
         User selectedUser = useCaseUser.execute(userId);
 
-        Loan loan = new Loan(id,selectedBook,selectedUser,loanDate,expectedDate,null);
+        Loan loan = new Loan(selectedBook,selectedUser,loanDate,expectedDate,null);
         SaveLoanUseCase useCase = new SaveLoanUseCase(new LoanDataRepository(new LoanFileLocalDataSource()));
         useCase.execute(loan);
+
         System.out.println("Se ha creado el prestamo con ID: " + loan.loanId);
     }
     public static void deleteLoan(){

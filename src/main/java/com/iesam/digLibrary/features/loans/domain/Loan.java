@@ -7,7 +7,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class Loan {
-    public final int loanId;
+    public final long loanId;
     public final Resources resource;
 
     public final User user;
@@ -15,7 +15,16 @@ public class Loan {
     public final Date expectedDate; // Cuando se supone que se tiene que devolver.
     public final Date returnedDate; //Nullable. Cuando el usuario devuelve el recurso
 
-    public Loan(int loanId, Resources resource, User user, Date loanDate, Date expectedDate, Date returnedDate) {
+    public Loan(Resources resource, User user, Date loanDate, Date expectedDate, Date returnedDate) {
+        this.loanId = System.currentTimeMillis();
+        this.resource = resource;
+        this.user = user;
+        this.loanDate = loanDate;
+        this.expectedDate = expectedDate;
+        this.returnedDate = returnedDate;
+    }
+
+    public Loan(long loanId, Resources resource, User user, Date loanDate, Date expectedDate, Date returnedDate) {
         this.loanId = loanId;
         this.resource = resource;
         this.user = user;
