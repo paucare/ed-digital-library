@@ -67,9 +67,10 @@ public class ResourcesPresentation {
     public static void getAllRegisters(){
         System.out.println("A continuación se muestra una lista de los recursos existentes en nuestra biblioteca");
         GetBooksUseCase useCase = new GetBooksUseCase(new BooksDataRepository(new BooksFileLocalDataSource()));
-        List<Books> ListaRecursos= useCase.execute();
-        for(Resources element : ListaRecursos){
-            System.out.println(element.name + " ("  + element.year + ") ");
+        List<Books> ListaLibros= useCase.execute();
+        for(Books element : ListaLibros){
+            System.out.println(element.name + " ("  + element.year + ") " + element.extension + " páginas");
+
         }
     }
 
