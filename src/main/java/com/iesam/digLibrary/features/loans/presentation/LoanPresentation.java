@@ -100,4 +100,18 @@ public class LoanPresentation {
             System.out.println(element.loanId + " | " + element.user.name + " | " + element.resource.name + " | " + element.loanDate + " | " + element.returnedDate);
         }
     }
+    public static void checkIfBookIsLoaned() {
+
+        System.out.println("Comprueba si el recurso esta prestado");
+        System.out.println("Introduce el ID del libro a buscar");
+        int searchId = sc.nextInt();
+        CheckIfBookIsLoanedUseCase useCase = new CheckIfBookIsLoanedUseCase(new BooksDataRepository(new BooksFileLocalDataSource()));
+        boolean condition = useCase.execute(searchId);
+        if (!condition) {
+            System.out.println("El libro se encuentra actualmente en un prestamo");
+        } else {
+            System.out.println("El libro se encuentra disponible.");
+        }
+    }
+
 }
