@@ -18,6 +18,7 @@ public class MainMenu extends Menu {
             System.out.println("1. Gestión de usuarios");
             System.out.println("2. Gestión de recursos");
             System.out.println("3. Gestión de prestamos");
+            System.out.println("4. Gestión de eventos");
             System.out.print("Introduce una opción: ");
 
     }
@@ -37,6 +38,9 @@ public class MainMenu extends Menu {
                 break;
             case 3:
                 menuSystem.goToMenu(new LoansMenu(menuSystem));
+                break;
+            case 4:
+                menuSystem.goToMenu(new EventMenu(menuSystem));
                 break;
 
             default:
