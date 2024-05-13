@@ -68,7 +68,7 @@ public class LoanPresentation {
     }
     public static void returnResourceToEndLoan(){
         System.out.println("Introduce el ID del prestamo cuyo recurso han devuelto: ");
-        int unchangedId = sc.nextInt();
+        long unchangedId = sc.nextLong();
         sc.nextLine();
         EndLoanUseCase useCase = new EndLoanUseCase(new LoanDataRepository(new LoanFileLocalDataSource()));
         useCase.execute(unchangedId);
@@ -80,7 +80,7 @@ public class LoanPresentation {
         GetActiveLoansUseCase useCase = new GetActiveLoansUseCase(new LoanDataRepository(new LoanFileLocalDataSource()));
         List<Loan> ListaActivos= useCase.execute();
         for(Loan element : ListaActivos){
-            System.out.println("ID | Usuario | Recurso | Fecha de Prestamo | Fecha de devolucion");
+            System.out.println("ID | Usuario | Recurso | Fecha de Prestamo | Fecha tope de devolución");
             System.out.println(element.loanId + " | " + element.user.name + " | " + element.resource.name + " | " + element.loanDate + " | " + element.expectedDate);
         }
     }

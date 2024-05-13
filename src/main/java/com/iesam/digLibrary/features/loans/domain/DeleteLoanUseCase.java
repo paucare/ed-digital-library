@@ -6,7 +6,7 @@ public class DeleteLoanUseCase {
     public DeleteLoanUseCase(LoanRepository repository) {
         this.repository = repository;
     }
-    public void execute(int loanId){
+    public void execute(long loanId){
         repository.deleteLoan(loanId);
     }
 }

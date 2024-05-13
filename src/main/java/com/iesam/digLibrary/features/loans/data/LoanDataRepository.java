@@ -20,12 +20,12 @@ public class LoanDataRepository implements LoanRepository {
 
     }
     @Override
-    public Loan getLoanById(int id){
+    public Loan getLoanById(long id){
         return localDataSource.findById(id);
     }
 
     @Override
-    public void deleteLoan(int loanId) {
+    public void deleteLoan(long loanId) {
         localDataSource.delete(loanId);
     }
 
