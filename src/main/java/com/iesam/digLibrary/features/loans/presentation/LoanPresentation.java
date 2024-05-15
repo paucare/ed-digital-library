@@ -14,6 +14,9 @@ import com.iesam.digLibrary.features.user.domain.GetUserByIdUseCase;
 import com.iesam.digLibrary.features.user.domain.User;
 import com.iesam.digLibrary.features.loans.domain.Loan;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
@@ -22,37 +25,26 @@ public class LoanPresentation {
     static Scanner sc = new Scanner(System.in);
     public static void showLoanForm(){
 
-        //SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+        Date currentDate = new Date();
 
         System.out.println("Formulario de nuevo prestamo");
-        System.out.println("Introduce el id del prestamo: ");
+        /* System.out.println("Introduce el id del prestamo: ");
         int id = sc.nextInt();
         sc.nextLine();
+        */
         System.out.println("Introduce el id del recurso: ");
         int resourceId = sc.nextInt();
         sc.nextLine();
         System.out.println("Introduce el id del usuario: ");
         String userId = sc.nextLine();
-        System.out.println("Introduce la fecha de prestamo: ");
-        String loanDate = sc.nextLine();
-        /*
-        String stringLoanDate = sc.nextLine();
-        String loanDate = null;
-        try {
-            loanDate = formatter.parse(stringLoanDate);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }*/
-        System.out.println("Introduce la fecha esperada de devolucion: ");
-        String returnDate = sc.nextLine();
-        /*
-        String stringReturnDate = sc.nextLine();
-        String returnDate = null;
-        try {
-            returnDate = formatter.parse(stringReturnDate);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }*/
+
+        Date loanDate = currentDate;
+        Date expectedDate = Loan.calculateExpectedDate(loanDate);
+
+        System.out.println("Fecha de prestamo: " + formatter.format(loanDate));
+        System.out.println("Fecha esperada de devolucion: " + formatter.format(expectedDate));
+
 
         GetUserByIdUseCase useCaseUser = new GetUserByIdUseCase(new UserDataRepository(new UserFileLocalDataSource()));
         GetBookByIdUseCase useCaseResource = new GetBookByIdUseCase(new BooksDataRepository(new BooksFileLocalDataSource()));
@@ -60,9 +52,10 @@ public class LoanPresentation {
         Books selectedBook = useCaseResource.execute(resourceId);
         User selectedUser = useCaseUser.execute(userId);
 
-        Loan loan = new Loan(id,selectedBook,selectedUser,loanDate,returnDate,null);
+        Loan loan = new Loan(selectedBook,selectedUser,loanDate,expectedDate,null);
         SaveLoanUseCase useCase = new SaveLoanUseCase(new LoanDataRepository(new LoanFileLocalDataSource()));
         useCase.execute(loan);
+
         System.out.println("Se ha creado el prestamo con ID: " + loan.loanId);
     }
     public static void deleteLoan(){
@@ -75,7 +68,7 @@ public class LoanPresentation {
     }
     public static void returnResourceToEndLoan(){
         System.out.println("Introduce el ID del prestamo cuyo recurso han devuelto: ");
-        int unchangedId = sc.nextInt();
+        long unchangedId = sc.nextLong();
         sc.nextLine();
         EndLoanUseCase useCase = new EndLoanUseCase(new LoanDataRepository(new LoanFileLocalDataSource()));
         useCase.execute(unchangedId);
@@ -87,7 +80,7 @@ public class LoanPresentation {
         GetActiveLoansUseCase useCase = new GetActiveLoansUseCase(new LoanDataRepository(new LoanFileLocalDataSource()));
         List<Loan> ListaActivos= useCase.execute();
         for(Loan element : ListaActivos){
-            System.out.println("ID | Usuario | Recurso | Fecha de Prestamo | Fecha de devolucion");
+            System.out.println("ID | Usuario | Recurso | Fecha de Prestamo | Fecha tope de devolución");
             System.out.println(element.loanId + " | " + element.user.name + " | " + element.resource.name + " | " + element.loanDate + " | " + element.expectedDate);
         }
     }

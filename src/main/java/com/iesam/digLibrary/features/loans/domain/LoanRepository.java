@@ -4,8 +4,8 @@ import java.util.List;
 
 public interface LoanRepository {
     public void saveLoan(Loan loan);
-    public void deleteLoan(int loanId);
-    public Loan getLoanById(int id);
+    public void deleteLoan(long loanId);
+    public Loan getLoanById(long id);
     public List<Loan> getLoans();
 
 }

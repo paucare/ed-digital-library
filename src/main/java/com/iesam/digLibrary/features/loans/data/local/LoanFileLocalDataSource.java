@@ -44,7 +44,7 @@ public class LoanFileLocalDataSource {
         }
     }
 
-    public Loan findById(int id) {
+    public Loan findById(long id) {
         List<Loan> models = findAll();
         for (Loan model : models) {
             if (Objects.equals(model.loanId, id)) {
@@ -77,7 +77,7 @@ public class LoanFileLocalDataSource {
         return new ArrayList<>();
     }
 
-    public void delete(int modelId) {
+    public void delete(long modelId) {
         List<Loan> newList = new ArrayList<>();
         List<Loan> models = findAll();
         for (Loan model : models) {
