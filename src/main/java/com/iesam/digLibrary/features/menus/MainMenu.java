@@ -1,6 +1,6 @@
 package com.iesam.digLibrary.features.menus;
 
-public class MainMenu extends Menu {
+public class MainMenu implements Menu {
 
     public final MenuSystem menuSystem;
 
@@ -9,7 +9,7 @@ public class MainMenu extends Menu {
     }
 
     @Override
-    void display() {
+    public void display() {
 
             ConsoleUtils.clearConsole();
 
@@ -24,7 +24,7 @@ public class MainMenu extends Menu {
     }
 
     @Override
-    void processChoice(int choice) {
+    public void processChoice(int choice) {
         switch (choice) {
             case 0:
                 System.out.println("Saliendo...");
