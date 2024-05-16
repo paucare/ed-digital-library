@@ -6,7 +6,7 @@ public class GetLoanById {
     public GetLoanById(LoanRepository repository) {
         this.repository = repository;
     }
-    public Loan execute(int id){
+    public Loan execute(long id){
        return repository.getLoanById(id);
     }
 }
