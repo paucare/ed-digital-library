@@ -44,7 +44,7 @@ class GetLoansUseCaseTest {
         allLoans.add(loan1);
         Mockito.when(repository.getLoans()).thenReturn(allLoans);
         //When
-        List<Loan> receivedLoans = useCase.excecute();
+        List<Loan> receivedLoans = useCase.execute();
         //Then
         assertEquals(receivedLoans.size(), allLoans.size());
         assertEquals(receivedLoans.get(0).loanId,loan1.loanId);

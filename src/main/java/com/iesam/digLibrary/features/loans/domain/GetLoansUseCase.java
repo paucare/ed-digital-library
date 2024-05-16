@@ -8,7 +8,7 @@ public class GetLoansUseCase {
     public GetLoansUseCase(LoanRepository repository) {
         this.repository = repository;
     }
-    public List<Loan> excecute(){
+    public List<Loan> execute(){
         return repository.getLoans();
     }
 }

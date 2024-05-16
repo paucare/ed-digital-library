@@ -7,9 +7,9 @@ import com.iesam.digLibrary.features.resources.books.domain.BooksRepository;
 import java.util.List;
 
 public class CheckIfBookIsLoanedUseCase {
-    private BooksRepository repository;
+    private LoanRepository repository;
 
-    public CheckIfBookIsLoanedUseCase(BooksRepository repository) {
+    public CheckIfBookIsLoanedUseCase(LoanRepository repository) {
         this.repository = repository;
     }
 
