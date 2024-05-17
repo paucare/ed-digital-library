@@ -6,6 +6,9 @@ import com.iesam.digLibrary.features.resources.domain.Resources;
 import com.iesam.digLibrary.features.resources.books.data.local.BooksFileLocalDataSource;
 import com.iesam.digLibrary.features.resources.books.domain.*;
 import com.iesam.digLibrary.features.resources.books.data.*;
+import com.iesam.digLibrary.features.resources.music.data.MusicDataRepository;
+import com.iesam.digLibrary.features.resources.music.data.local.MusicFileLocalDataSource;
+import com.iesam.digLibrary.features.resources.music.domain.*;
 import com.iesam.digLibrary.features.user.data.UserDataRepository;
 import com.iesam.digLibrary.features.user.data.local.UserFileLocalDataSource;
 import com.iesam.digLibrary.features.user.domain.UpdateUserUseCase;
@@ -16,62 +19,151 @@ public class ResourcesPresentation {
     static Scanner sc = new Scanner(System.in);
     public static void showResourceForm(){
 
-        System.out.println("Ingrese los datos del recurso digital");
-        System.out.println("Introduce el id: ");
+        System.out.println("Introduce the digital resource basic data you want to create");
+        System.out.println("ID: ");
         int id = sc.nextInt();
         sc.nextLine();
-        System.out.println("Introduce el nombre: ");
+        System.out.println("Name: ");
         String name = sc.nextLine();
-        System.out.println("Introduce el año: ");
+        System.out.println("Year of release/publication: ");
         int year = sc.nextInt();
         sc.nextLine();
-        System.out.println("Introduce una descripción: ");
+        System.out.println("Description: ");
         String description = sc.nextLine();
-        System.out.println("Introduce la extension: ");
-        int extension = sc.nextInt();
+        System.out.println("What kind of resource is? 1.Books 2.CD");
+        int option = sc.nextInt();
         sc.nextLine();
+        switch (option) {
 
-        Books resource = new Books(id,name,year,description,extension);
-        SaveBookUseCase useCase = new SaveBookUseCase(new BooksDataRepository(new BooksFileLocalDataSource()));
-        useCase.execute(resource);
-        System.out.println("Se ha guardado el libro: " + resource.name);
+            case 1:
+                System.out.println("Number of pages: ");
+                int extension = sc.nextInt();
+                sc.nextLine();
+                Books resourceBook = new Books(id, name, year, description, extension);
+                SaveBookUseCase useCaseBook = new SaveBookUseCase(new BooksDataRepository(new BooksFileLocalDataSource()));
+                useCaseBook.execute(resourceBook);
+                System.out.println("The book " + resourceBook.name + "was saved");
+                return;
+            case 2:
+                System.out.println("Number of songs: ");
+                int numSongs = sc.nextInt();
+                sc.nextLine();
+                Music resourceMusic = new Music(id, name, year, description, numSongs);
+                SaveMusicUseCase useCaseMusic = new SaveMusicUseCase(new MusicDataRepository(new MusicFileLocalDataSource()));
+                useCaseMusic.execute(resourceMusic);
+                System.out.println("The book " + resourceMusic.name + "was saved");
+                return;
+            default:
+                System.out.println("Please enter a valid option");
+                break;
+        }
     }
     public static void deleteResourceById(){
-        System.out.println("Introduce el id del libro a borrar: ");
-        int id = sc.nextInt();
-        DeleteBookUseCase useCase = new DeleteBookUseCase(new BooksDataRepository(new BooksFileLocalDataSource()));
-        useCase.execute(id);
-        System.out.println("Se ha borrado el recurso con id " + id + " con exito");
+        System.out.println("What kind of resource you want to delete? 1.Books 2.Music");
+        int option = sc.nextInt();
+        sc.nextLine();
+        switch (option){
+            case 1:
+                System.out.println("Enter the book id to delete: ");
+                int idBook = sc.nextInt();
+                DeleteBookUseCase useCaseBook = new DeleteBookUseCase(new BooksDataRepository(new BooksFileLocalDataSource()));
+                useCaseBook.execute(idBook);
+                System.out.println("The resource which id is " + idBook + " was deleted succesfully");
+                return;
+            case 2:
+                System.out.println("Enter the music id to delete: ");
+                int idMusic = sc.nextInt();
+                DeleteMusicUseCase useCaseMusic = new DeleteMusicUseCase(new MusicDataRepository(new MusicFileLocalDataSource()));
+                useCaseMusic.execute(idMusic);
+                System.out.println("The resource which id is " + idMusic + " was deleted succesfully");
+                return;
+            default:
+                System.out.println("Please enter a valid option");
+                break;
+        }
+
     }
     public static void updateBook(){
-        System.out.println("Introduce el ID del libro a modificar");
-        int unchangedId = sc.nextInt();
+        System.out.println("What kind of resource you want to delete? 1.Books 2.Music");
+        int option = sc.nextInt();
+        sc.nextLine();
 
-        System.out.println("Formulario para editar datos de libro");
-        System.out.println("Introduce el nombre: ");
-        String name = sc.nextLine();
-        System.out.println("Introduce el año: ");
-        int year = sc.nextInt();
-        sc.nextLine();
-        System.out.println("Introduce la sinopsis: ");
-        String synopsis = sc.nextLine();
-        System.out.println("Introduce la extension: ");
-        int extension = sc.nextInt();
-        sc.nextLine();
-        Books updatedBook = new Books(unchangedId,name,year,synopsis,extension);
-        UpdateBookUseCase useCase = new UpdateBookUseCase(new BooksDataRepository(new BooksFileLocalDataSource()));
-        useCase.execute(updatedBook);
-        System.out.println("");
+
+        switch (option){
+            case 1:
+                System.out.println("Enter the id to update");
+                int unchangedIdBook = sc.nextInt();
+
+                System.out.println("Edit form for books:");
+                System.out.println("ID: ");
+                String nameBook = sc.nextLine();
+                System.out.println("Year: ");
+                int yearBook = sc.nextInt();
+                sc.nextLine();
+                System.out.println("Description: ");
+                String synopsisBook = sc.nextLine();
+                System.out.println("Extension: ");
+                int extension = sc.nextInt();
+                sc.nextLine();
+
+                Books updatedBook = new Books(unchangedIdBook,nameBook,yearBook,synopsisBook,extension);
+                UpdateBookUseCase useCaseBook = new UpdateBookUseCase(new BooksDataRepository(new BooksFileLocalDataSource()));
+                useCaseBook.execute(updatedBook);
+                return;
+            case 2:
+
+                System.out.println("Enter the id to update");
+                int unchangedIdMusic = sc.nextInt();
+
+                System.out.println("Edit form for music:");
+                System.out.println("ID: ");
+                String nameMusic = sc.nextLine();
+                System.out.println("Year: ");
+                int yearMusic = sc.nextInt();
+                sc.nextLine();
+                System.out.println("Description: ");
+                String descriptionMusic = sc.nextLine();
+                System.out.println("Extension: ");
+                int numSongs = sc.nextInt();
+                sc.nextLine();
+                Music updatedMusic = new Music(unchangedIdMusic,nameMusic,yearMusic,descriptionMusic,numSongs);
+                UpdateMusicUseCase useCaseMusic= new UpdateMusicUseCase(new MusicDataRepository(new MusicFileLocalDataSource()));
+                useCaseMusic.execute(updatedMusic);
+                return;
+            default:
+                System.out.println("Please enter a valid option");
+                break;
+        }
     }
-
     public static void getAllRegisters(){
-        System.out.println("A continuación se muestra una lista de los recursos existentes en nuestra biblioteca");
-        GetBooksUseCase useCase = new GetBooksUseCase(new BooksDataRepository(new BooksFileLocalDataSource()));
-        List<Books> ListaLibros= useCase.execute();
-        for(Books element : ListaLibros){
-            System.out.println(element.name + " ("  + element.year + ") " + element.extension + " páginas");
+        System.out.println("What kind of resource you want to get the full list? 1.Books 2.Music");
+        int option = sc.nextInt();
+        sc.nextLine();
+
+        switch (option) {
+            case 1:
+                System.out.println("Next a list of all our books will be shown");
+                GetBooksUseCase useCaseBooks = new GetBooksUseCase(new BooksDataRepository(new BooksFileLocalDataSource()));
+                List<Books> booksList = useCaseBooks.execute();
+                for (Books book : booksList) {
+                    System.out.println(book.name + " (" + book.year + ") " + book.extension + " pages");
+                }
+                    return;
+                case 2:
+                    System.out.println("Next a list of all our CDs will be shown");
+                    GetAllMusicUseCase useCaseMusic = new GetAllMusicUseCase(new MusicDataRepository(new MusicFileLocalDataSource()));
+                    List<Music> musicList = useCaseMusic.execute();
+                    for (Music music : musicList) {
+                        System.out.println(music.name + " (" + music.year + ") " + music.numSongs + " songs");
+                    }
+                    return;
+            default:
+                System.out.println("Please enter a valid option");
+                break;
 
         }
     }
-
 }
+
+
+
