@@ -18,9 +18,9 @@ public class CheckIfBookIsLoanedUseCase {
         List<Loan> loanActiveList = useCase.execute();
         for(Loan element : loanActiveList){
             if(element.resource.id == bookId){
-                return false;
+                return true;
             }
         }
-        return true;
+        return false;
     }
 }

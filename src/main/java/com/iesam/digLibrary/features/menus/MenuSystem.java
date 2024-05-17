@@ -6,7 +6,7 @@ import java.util.Stack;
 public class MenuSystem {
     Scanner scanner = new Scanner(System.in);
 
-    private Stack<Menu> menuStack;
+    public final Stack<Menu> menuStack;
 
     public MenuSystem() {
         menuStack = new Stack<>();
@@ -15,7 +15,6 @@ public class MenuSystem {
     }
 
     public  void run() {
-
 
         while (!menuStack.isEmpty()) {
             Menu currentMenu = menuStack.peek();
@@ -31,10 +30,10 @@ public class MenuSystem {
     }
 
     public void goBack() {
-        if (menuStack.size() > 1) { // Ensure there's at least one menu in stack
+        if (menuStack.size() > 1) {
             menuStack.pop();
         } else {
-            System.out.println("Saliendo del programa...");
+            System.out.println("Exiting the program...");
             menuStack.clear();
         }
     }

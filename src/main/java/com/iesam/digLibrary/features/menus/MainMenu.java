@@ -13,13 +13,13 @@ public class MainMenu implements Menu {
 
             ConsoleUtils.clearConsole();
 
-            System.out.println("* Menu principal * ");
-            System.out.println("0. Salir");
-            System.out.println("1. Gestión de usuarios");
-            System.out.println("2. Gestión de recursos");
-            System.out.println("3. Gestión de prestamos");
-            System.out.println("4. Gestión de eventos");
-            System.out.print("Introduce una opción: ");
+            System.out.println("* Main menu * ");
+            System.out.println("0. Exit");
+            System.out.println("1. User management");
+            System.out.println("2. Resources management");
+            System.out.println("3. Loan management");
+            System.out.println("4. Events management");
+            System.out.print("Enter an option: ");
 
     }
 
@@ -27,7 +27,7 @@ public class MainMenu implements Menu {
     public void processChoice(int choice) {
         switch (choice) {
             case 0:
-                System.out.println("Saliendo...");
+                System.out.println("Exiting...");
                 menuSystem.goBack();
                 break;
             case 1:
@@ -44,7 +44,7 @@ public class MainMenu implements Menu {
                 break;
 
             default:
-                System.out.println("Opción no valida. Intentalo de nuevo");
+                System.out.println("Option not valid. Try again.");
                 break;
         }
 

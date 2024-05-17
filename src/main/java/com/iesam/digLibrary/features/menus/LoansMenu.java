@@ -12,51 +12,50 @@ public class LoansMenu implements Menu{
     @Override
     public void display() {
         ConsoleUtils.clearConsole();
-        System.out.println("P. Gestion de prestamos .P");
-        System.out.println("0. Volver al menu principal");
-        System.out.println("1. Dar de alta un prestamo");
-        System.out.println("2. Borrar un prestamo");
-        System.out.println("3. Terminar un prestamo");
-        System.out.println("4. Mostrar prestamos activos");
-        System.out.println("5. Mostrar prestamos finalizados");
-        System.out.println("6. Comprueba si el recurso se encuentra en un prestamo activo");
-
-        System.out.print("Introduce una opcion: ");
+        System.out.println("P. Loan management .P");
+        System.out.println("0. Return to main menu");
+        System.out.println("1. Register a loan");
+        System.out.println("2. Delete a loan");
+        System.out.println("3. End a loan");
+        System.out.println("4. Show active loans");
+        System.out.println("5. Show finished loans");
+        System.out.println("6. Check if a resource is loaned");
+        System.out.print("Enter an option: ");
     }
 
     @Override
     public void processChoice(int choice) {
         switch (choice) {
             case 0:
-                System.out.println("Volver al menu principal");
+                System.out.println("Returning to the main menu...");
                 menuSystem.goBack();
                 break;
             case 1:
                 LoanPresentation.showLoanForm();
-                System.out.println("Siguiente operación");
+                System.out.println("Next operation");
                 return;
             case 2:
                 LoanPresentation.deleteLoan();
-                System.out.println("Siguiente operación");
+                System.out.println("Next operation");
                 return;
             case 3:
                 LoanPresentation.returnResourceToEndLoan();
-                System.out.println("Siguiente operación");
+                System.out.println("Next operation");
                 return;
             case 4:
                 LoanPresentation.getActiveLoans();
-                System.out.println("Siguiente operación");
+                System.out.println("Next operation");
                 return;
             case 5:
                 LoanPresentation.getFinishedLoans();
-                System.out.println("Siguiente operación");
+                System.out.println("Next operation");
                 return;
             case 6:
                 LoanPresentation.checkIfBookIsLoaned();
-                System.out.println("Siguiente operacion");
+                System.out.println("Next operation");
                 return;
             default:
-                System.out.println("Opcion no valida. Intentalo de nuevo.");
+                System.out.println("Option not valid. Try again.");
                 break;
         }
     }

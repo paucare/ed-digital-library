@@ -43,7 +43,7 @@ class CheckIfBookIsLoanedUseCaseTest {
         Loan l1 = new Loan(b1,u1,currentDate,Loan.calculateExpectedDate(currentDate),null);
         boolean result = useCase.execute(1);
 
-        Assertions.assertFalse(result);
+        Assertions.assertTrue(result);
 
     }
     @Test
@@ -51,7 +51,7 @@ class CheckIfBookIsLoanedUseCaseTest {
         int bookId = 2;
         Books b1 = new Books(2,"Book",2024,"Novela corta",100);
         boolean result = useCase.execute(2);
-        Assertions.assertTrue(result);
+        Assertions.assertFalse(result);
 
     }
 }
