@@ -38,13 +38,14 @@ public class LoanPresentation {
         */
         System.out.println("Enter the user ID: ");
         String userId = sc.nextLine();
-        GetUserByIdUseCase useCaseUser = new GetUserByIdUseCase(new UserDataRepository(new UserFileLocalDataSource()));
-        User selectedUser = useCaseUser.execute(userId);
+
 
         System.out.println("What kind of resource will you loan? 1.Book 2.CD");
         int option = sc.nextInt();
         sc.nextLine();
 
+        GetUserByIdUseCase useCaseUser = new GetUserByIdUseCase(new UserDataRepository(new UserFileLocalDataSource()));
+        User selectedUser = useCaseUser.execute(userId);
         switch (option) {
             case 1: handleBookLoan(selectedUser,currentDate,formatter);
                 return;
