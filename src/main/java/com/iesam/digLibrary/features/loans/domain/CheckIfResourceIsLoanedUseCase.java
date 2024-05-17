@@ -1,15 +1,10 @@
 package com.iesam.digLibrary.features.loans.domain;
-
-import com.iesam.digLibrary.features.loans.data.LoanDataRepository;
-import com.iesam.digLibrary.features.loans.data.local.LoanFileLocalDataSource;
-import com.iesam.digLibrary.features.resources.books.domain.BooksRepository;
-
 import java.util.List;
 
-public class CheckIfBookIsLoanedUseCase {
+public class CheckIfResourceIsLoanedUseCase {
     private LoanRepository repository;
 
-    public CheckIfBookIsLoanedUseCase(LoanRepository repository) {
+    public CheckIfResourceIsLoanedUseCase(LoanRepository repository) {
         this.repository = repository;
     }
 

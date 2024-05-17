@@ -51,7 +51,7 @@ public class LoansMenu implements Menu{
                 System.out.println("Next operation");
                 return;
             case 6:
-                LoanPresentation.checkIfBookIsLoaned();
+                LoanPresentation.checkIfResourceIsLoaned();
                 System.out.println("Next operation");
                 return;
             default:

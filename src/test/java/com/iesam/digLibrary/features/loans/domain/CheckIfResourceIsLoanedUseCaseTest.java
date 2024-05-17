@@ -16,14 +16,14 @@ import java.util.Date;
 import java.util.List;
 
 @ExtendWith(MockitoExtension.class)
-class CheckIfBookIsLoanedUseCaseTest {
+class CheckIfResourceIsLoanedUseCaseTest {
     @Mock
     LoanRepository repository;
-    CheckIfBookIsLoanedUseCase useCase;
+    CheckIfResourceIsLoanedUseCase useCase;
 
     @BeforeEach
     void setUp() {
-        useCase = new CheckIfBookIsLoanedUseCase(repository);
+        useCase = new CheckIfResourceIsLoanedUseCase(repository);
     }
 
     @AfterEach
