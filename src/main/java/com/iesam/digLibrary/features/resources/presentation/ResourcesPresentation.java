@@ -32,7 +32,7 @@ public class ResourcesPresentation {
                 SaveBookUseCase useCaseBook = new SaveBookUseCase(new BooksDataRepository(new BooksFileLocalDataSource()));
                 useCaseBook.execute(resourceBook);
                 System.out.println("The book " + resourceBook.name + " was saved");
-                return;
+                break;
             case 2:
                 System.out.println("Number of songs: ");
                 int numSongs = sc.nextInt();
@@ -41,7 +41,7 @@ public class ResourcesPresentation {
                 SaveMusicUseCase useCaseMusic = new SaveMusicUseCase(new MusicDataRepository(new MusicFileLocalDataSource()));
                 useCaseMusic.execute(resourceMusic);
                 System.out.println("The book " + resourceMusic.name + " was saved");
-                return;
+                break;
             default:
                 System.out.println("Please enter a valid option");
                 break;
@@ -58,14 +58,14 @@ public class ResourcesPresentation {
                 DeleteBookUseCase useCaseBook = new DeleteBookUseCase(new BooksDataRepository(new BooksFileLocalDataSource()));
                 useCaseBook.execute(idBook);
                 System.out.println("The resource which id is " + idBook + " was deleted succesfully");
-                return;
+                break;
             case 2:
                 System.out.println("Enter the CD id to delete: ");
                 int idMusic = sc.nextInt();
                 DeleteMusicUseCase useCaseMusic = new DeleteMusicUseCase(new MusicDataRepository(new MusicFileLocalDataSource()));
                 useCaseMusic.execute(idMusic);
                 System.out.println("The resource which id is " + idMusic + " was deleted succesfully");
-                return;
+                break;
             default:
                 System.out.println("Please enter a valid option");
                 break;
@@ -88,7 +88,7 @@ public class ResourcesPresentation {
                 Books updatedBook = new Books(p.id,p.name,p.year,p.description,extension);
                 UpdateBookUseCase useCaseBook = new UpdateBookUseCase(new BooksDataRepository(new BooksFileLocalDataSource()));
                 useCaseBook.execute(updatedBook);
-                return;
+                break;
             case 2:
                 System.out.println("Enter the CD id to update");
                 Resources t = showUpdateForm();
@@ -98,7 +98,7 @@ public class ResourcesPresentation {
                 Music updatedMusic = new Music(t.id,t.name,t.year,t.description,numSongs);
                 UpdateMusicUseCase useCaseMusic= new UpdateMusicUseCase(new MusicDataRepository(new MusicFileLocalDataSource()));
                 useCaseMusic.execute(updatedMusic);
-                return;
+                break;
             default:
                 System.out.println("Please enter a valid option");
                 break;
@@ -117,7 +117,7 @@ public class ResourcesPresentation {
                 for (Books book : booksList) {
                     System.out.println(book.name + " (" + book.year + ") " + book.extension + " pages");
                 }
-                    return;
+                    break;
                 case 2:
                     System.out.println("Next a list of all our CDs will be shown");
                     GetAllMusicUseCase useCaseMusic = new GetAllMusicUseCase(new MusicDataRepository(new MusicFileLocalDataSource()));
@@ -125,7 +125,7 @@ public class ResourcesPresentation {
                     for (Music music : musicList) {
                         System.out.println(music.name + " (" + music.year + ") " + music.numSongs + " songs");
                     }
-                    return;
+                    break;
             default:
                 System.out.println("Please enter a valid option");
                 break;
