@@ -14,10 +14,9 @@ public class CheckIfBookIsLoanedUseCase {
     }
 
     public boolean execute(int bookId){
-        GetActiveLoansUseCase useCase = new GetActiveLoansUseCase(new LoanDataRepository(new LoanFileLocalDataSource()));
-        List<Loan> loanActiveList = useCase.execute();
-        for(Loan element : loanActiveList){
-            if(element.resource.id == bookId){
+        List<Loan> loanList = repository.getLoans();
+        for(Loan element : loanList){
+            if(element.resource.id == bookId && element.isActive()) {
                 return true;
             }
         }
