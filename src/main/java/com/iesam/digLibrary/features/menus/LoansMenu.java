@@ -2,7 +2,7 @@ package com.iesam.digLibrary.features.menus;
 
 import com.iesam.digLibrary.features.loans.presentation.LoanPresentation;
 
-public class LoansMenu extends Menu{
+public class LoansMenu implements Menu{
     public final MenuSystem menuSystem;
 
     public LoansMenu(MenuSystem menuSystem) {
@@ -10,7 +10,7 @@ public class LoansMenu extends Menu{
     }
 
     @Override
-    void display() {
+    public void display() {
         ConsoleUtils.clearConsole();
         System.out.println("P. Gestion de prestamos .P");
         System.out.println("0. Volver al menu principal");
@@ -25,7 +25,7 @@ public class LoansMenu extends Menu{
     }
 
     @Override
-    void processChoice(int choice) {
+    public void processChoice(int choice) {
         switch (choice) {
             case 0:
                 System.out.println("Volver al menu principal");

@@ -98,7 +98,7 @@ public class LoanPresentation {
         System.out.println("Comprueba si el recurso esta prestado");
         System.out.println("Introduce el ID del libro a buscar");
         int searchId = sc.nextInt();
-        CheckIfBookIsLoanedUseCase useCase = new CheckIfBookIsLoanedUseCase(new BooksDataRepository(new BooksFileLocalDataSource()));
+        CheckIfBookIsLoanedUseCase useCase = new CheckIfBookIsLoanedUseCase(new LoanDataRepository(new LoanFileLocalDataSource()));
         boolean condition = useCase.execute(searchId);
         if (!condition) {
             System.out.println("El libro se encuentra actualmente en un prestamo");

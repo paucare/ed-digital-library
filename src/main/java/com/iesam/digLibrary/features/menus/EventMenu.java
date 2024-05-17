@@ -1,7 +1,7 @@
 package com.iesam.digLibrary.features.menus;
 
 import com.iesam.digLibrary.features.events.presentation.EventPresentation;
-public class EventMenu extends Menu {
+public class EventMenu implements Menu {
     public final MenuSystem menuSystem;
 
     public EventMenu(MenuSystem menuSystem) {
@@ -9,7 +9,7 @@ public class EventMenu extends Menu {
     }
 
     @Override
-    void display() {
+    public void display() {
         ConsoleUtils.clearConsole();
         System.out.println("E. Gestion de eventos .E");
         System.out.println("0. Volver al menu principal");
@@ -21,7 +21,7 @@ public class EventMenu extends Menu {
     }
 
     @Override
-    void processChoice(int choice) {
+    public void processChoice(int choice) {
         switch (choice) {
             case 0:
                 System.out.println("Volver al menu principal");

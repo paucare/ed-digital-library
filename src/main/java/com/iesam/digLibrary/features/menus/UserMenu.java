@@ -2,14 +2,14 @@ package com.iesam.digLibrary.features.menus;
 
 import com.iesam.digLibrary.features.user.presentation.UserPresentation;
 
-public class UserMenu extends Menu{
+public class UserMenu implements Menu{
     public final MenuSystem menuSystem; // Reference to the MenuSystem instance
 
     public UserMenu(MenuSystem menuSystem) {
         this.menuSystem = menuSystem;
     }
     @Override
-    void display() {
+    public void display() {
             ConsoleUtils.clearConsole();
             System.out.println("U. Gestion de usuario .U");
             System.out.println("0. Volver al menu principal");
@@ -21,7 +21,7 @@ public class UserMenu extends Menu{
     }
 
     @Override
-    void processChoice(int choice) {
+    public void processChoice(int choice) {
 
             switch (choice) {
                 case 0:
