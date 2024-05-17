@@ -42,9 +42,9 @@ public class ResourcesMenu implements Menu {
                 System.out.println("Next operation");
                 return;
             case 4:
-
                 ResourcesPresentation.getAllRegisters();
                 System.out.println("Next operation");
+                return;
             default:
                 System.out.println("Option not valid. Try again.");
                 break;
