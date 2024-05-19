@@ -3,7 +3,7 @@ package com.iesam.digLibrary.features.menus;
 import com.iesam.digLibrary.features.user.presentation.UserPresentation;
 
 public class UserMenu implements Menu{
-    public final MenuSystem menuSystem; // Reference to the MenuSystem instance
+    public final MenuSystem menuSystem;
 
     public UserMenu(MenuSystem menuSystem) {
         this.menuSystem = menuSystem;
@@ -11,12 +11,12 @@ public class UserMenu implements Menu{
     @Override
     public void display() {
             ConsoleUtils.clearConsole();
-            System.out.println("U. Gestion de usuario .U");
-            System.out.println("0. Volver al menu principal");
-            System.out.println("1. Dar de alta a un usuario");
-            System.out.println("2. Dar de baja un usuario");
-            System.out.println("3. Actualizar un usuario");
-            System.out.print("Introduce una opcion: ");
+            System.out.println("U. User management .U");
+            System.out.println("0. Return to main menu");
+            System.out.println("1. Register an user");
+            System.out.println("2. Delete an user");
+            System.out.println("3. Update an user");
+            System.out.print("Enter an option: ");
 
     }
 
@@ -25,20 +25,20 @@ public class UserMenu implements Menu{
 
             switch (choice) {
                 case 0:
-                    System.out.println("Volver al menu principal");
+                    System.out.println("Returning to main menu");
                     menuSystem.goBack();
                     break;
                 case 1: UserPresentation.showUserForm();
-                    System.out.println("Siguiente operación");
+                    System.out.println("Next operation");
                     break;
                 case 2: UserPresentation.deleteUserByDni();
-                    System.out.println("Siguiente operación");
+                    System.out.println("Next operation");
                     break;
                 case 3: UserPresentation.updateUser();
-                    System.out.println("Siguiente operación");
+                    System.out.println("Next operation");
                     return;
                 default:
-                    System.out.println("Opcion no valida. Intentalo de nuevo.");
+                    System.out.println("Option not valid. Try again.");
                     break;
 
         }

@@ -1,8 +1,6 @@
 package com.iesam.digLibrary.features.loans.domain;
 
 import com.iesam.digLibrary.features.resources.books.domain.Books;
-import com.iesam.digLibrary.features.resources.books.domain.BooksRepository;
-import com.iesam.digLibrary.features.resources.domain.Resources;
 import com.iesam.digLibrary.features.user.domain.User;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
@@ -13,45 +11,49 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.awt.print.Book;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
 @ExtendWith(MockitoExtension.class)
-class CheckIfBookIsLoanedUseCaseTest {
+class CheckIfResourceIsLoanedUseCaseTest {
     @Mock
     LoanRepository repository;
-    CheckIfBookIsLoanedUseCase useCase;
+    CheckIfResourceIsLoanedUseCase useCase;
+
     @BeforeEach
     void setUp() {
-        useCase = new CheckIfBookIsLoanedUseCase(repository);
+        useCase = new CheckIfResourceIsLoanedUseCase(repository);
     }
 
     @AfterEach
     void tearDown() {
-        useCase=null;
+        useCase =null;
     }
     @Test
-    public void IfBookIsTakenReturnsFalse(){
+    public void IfBookIsTakenReturnsTrue(){
         //Given
         Date currentDate = new Date();
         int bookId = 1;
+        List<Loan> loans = new ArrayList<>();
         Books b1 = new Books(1,"Book",2024,"Novela corta",100);
         User u1 = new User("123","Usuario","Apellido",123,"Adress");
         Loan l1 = new Loan(b1,u1,currentDate,Loan.calculateExpectedDate(currentDate),null);
-        boolean result = useCase.execute(1);
+        loans.add(l1);
 
-        Assertions.assertFalse(result);
+        Mockito.when(repository.getLoans()).thenReturn(loans);
+
+        boolean result = useCase.execute(bookId);
+
+        Assertions.assertTrue(result);
 
     }
     @Test
-    public void IfBookIsNotTakenReturnsTrue(){
+    public void IfBookIsNotTakenReturnsFalse(){
         int bookId = 2;
-        Books b1 = new Books(2,"Book",2024,"Novela corta",100);
-        boolean result = useCase.execute(2);
-        Assertions.assertTrue(result);
+        Mockito.when(repository.getLoans()).thenReturn(new ArrayList<>());
+        boolean result = useCase.execute(bookId);
+        Assertions.assertFalse(result);
 
     }
 }

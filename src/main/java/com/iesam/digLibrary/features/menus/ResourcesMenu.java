@@ -12,41 +12,41 @@ public class ResourcesMenu implements Menu {
     @Override
     public void display() {
         ConsoleUtils.clearConsole();
-        System.out.println("R. Gestion de recursos .R");
-        System.out.println("0. Volver al menu principal");
-        System.out.println("1. Dar de alta un recurso");
-        System.out.println("2. Dar de baja un recurso");
-        System.out.println("3. Actualizar un recurso");
-        System.out.println("4. Mostrar lista de recursos");
+        System.out.println("R. Resources management .R");
+        System.out.println("0. Return to main menu");
+        System.out.println("1. Register a resource");
+        System.out.println("2. Delete a resource");
+        System.out.println("3. Update a resource");
+        System.out.println("4. Show all resources list");
 
-        System.out.print("Introduce una opcion: ");
+        System.out.print("Enter an option: ");
     }
 
     @Override
     public void processChoice(int choice) {
         switch (choice) {
             case 0:
-                System.out.println("Volver al menu principal");
+                System.out.println("Returning to the main menu...");
                 menuSystem.goBack();
                 break;
             case 1:
                 ResourcesPresentation.showResourceForm();
-                System.out.println("Siguiente operación");
+                System.out.println("Next operation");
                 return;
             case 2:
                 ResourcesPresentation.deleteResourceById();
-                System.out.println("Siguiente operación");
+                System.out.println("Next operation");
                 return;
             case 3:
                 ResourcesPresentation.updateBook();
-                System.out.println("Siguiente operación");
+                System.out.println("Next operation");
                 return;
             case 4:
-
                 ResourcesPresentation.getAllRegisters();
-                System.out.println("Siguiente operación");
+                System.out.println("Next operation");
+                return;
             default:
-                System.out.println("Opcion no valida. Intentalo de nuevo.");
+                System.out.println("Option not valid. Try again.");
                 break;
         }
     }
