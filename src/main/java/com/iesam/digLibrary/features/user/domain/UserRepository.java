@@ -1,5 +1,7 @@
 package com.iesam.digLibrary.features.user.domain;
 
+import java.util.List;
+
 public interface UserRepository {
     public void saveUser(User user);
 

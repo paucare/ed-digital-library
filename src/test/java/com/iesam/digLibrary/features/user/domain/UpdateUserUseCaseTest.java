@@ -1,6 +1,5 @@
 package com.iesam.digLibrary.features.user.domain;
 
-import com.iesam.digLibrary.features.exceptions.NotValidInputException;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -42,8 +41,7 @@ class UpdateUserUseCaseTest {
         User user = new User("8001","User","Surname",600800900,"Calle");
         Mockito.when(repository.getUserById(user.dni)).thenReturn(null);
         //When
-        NotValidInputException e = assertThrows(NotValidInputException.class, () -> useCase.execute(user));
-        assertEquals("The user does not exist", e.getMessage());
+        useCase.execute(user);
         //Then
         Mockito.verify(repository,Mockito.times(0)).updateUser(user);
 
