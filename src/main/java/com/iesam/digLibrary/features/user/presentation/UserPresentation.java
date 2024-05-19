@@ -39,8 +39,9 @@ public class UserPresentation {
         System.out.println("Enter the users' ID to delete: ");
         String dni = sc.nextLine();
         DeleteUserUseCase useCase = new DeleteUserUseCase(new UserDataRepository(new UserFileLocalDataSource()));
-        try{useCase.execute(dni);
-        System.out.println("The user with ID: " + dni + " was deleted successfully");
+        try{
+            useCase.execute(dni);
+            System.out.println("The user with ID: " + dni + " was deleted successfully");
         } catch (NotValidInputException e){
             e.getMessage();
         }
