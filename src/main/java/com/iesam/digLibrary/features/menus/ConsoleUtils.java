@@ -4,7 +4,7 @@ import java.io.IOException;
 
 public class ConsoleUtils {
         public static void clearConsole() {
-            for(int clear = 0; clear < 20; clear++) {
+            for(int clear = 0; clear < 25; clear++) {
                 System.out.println("\b") ;
             }
         }
