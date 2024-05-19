@@ -1,5 +1,6 @@
 package com.iesam.digLibrary.features.user.domain;
 
+import com.iesam.digLibrary.features.exceptions.NotValidInputException;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -27,10 +28,28 @@ class SaveUserUseCaseTest {
     @Test
     public void whenGivenAModelSaveIt(){
         //Given
-        User user = new User("8001","Usuario","Apellido",600800900,"Calle");
+        User user = new User("8001","User","Surname",600800900,"Address");
+        Mockito.when(repository.getUserById(user.dni)).thenReturn(null);
         //When
         useCase.execute(user);
         //Then
         Mockito.verify(repository,Mockito.times(1)).saveUser(user);
+    }
+    @Test
+    public void alreadyExistingUserWithSaidIDReturnsNothing() {
+
+        //Given
+        User existingUser = new User("existingId", "Existing", "User", 123456789, "Address");
+        Mockito.when(repository.getUserById(existingUser.dni)).thenReturn(existingUser);
+
+        //When
+        //useCase.execute(existingUser);
+        NotValidInputException e = assertThrows(NotValidInputException.class, () -> useCase.execute(existingUser));
+        assertEquals("A user with said ID already exists", e.getMessage());
+
+
+        //Then
+        Mockito.verify(repository, Mockito.times(0)).saveUser(existingUser);
+
     }
 }
