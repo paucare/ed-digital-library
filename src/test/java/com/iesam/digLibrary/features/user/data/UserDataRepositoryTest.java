@@ -18,13 +18,23 @@ class UserDataRepositoryTest {
     @Mock
     UserFileLocalDataSource localDataSource;
 
+    UserDataRepository dataRepository;
+    @BeforeEach
+    void setUp(){
+        dataRepository = new UserDataRepository(localDataSource);
+    }
+    @AfterEach
+    void tearDown(){
+        dataRepository = null;
+    }
+
     @Test
     public void getUserMethodCallsLocalDataSource(){
         //Given
         User user = new User("8001","User","Surname",123,"Address");
         Mockito.when(localDataSource.findById(user.dni)).thenReturn(user);
         //When
-        User userRetrieved = localDataSource.findById(user.dni);
+        User userRetrieved = dataRepository.getUserById(user.dni);
         //Then
         Assertions.assertEquals(userRetrieved.dni,"8001");
         Assertions.assertEquals(userRetrieved.name,"User");
@@ -38,7 +48,7 @@ class UserDataRepositoryTest {
         //Given
         String idToDelete = "123";
         //When
-        localDataSource.delete(idToDelete);
+        dataRepository.deleteUser(idToDelete);
         //Then
         Mockito.verify(localDataSource,Mockito.times(1)).delete(idToDelete);
     }
@@ -47,7 +57,7 @@ class UserDataRepositoryTest {
         //Given
         User user = new User("8001","User","Surname",123,"Address");
         //When
-        localDataSource.save(user);
+        dataRepository.saveUser(user);
         //Then
         Mockito.verify(localDataSource,Mockito.times(1)).save(user);
     }
@@ -56,8 +66,8 @@ class UserDataRepositoryTest {
         //Given
         User user = new User("8001","User","Surname",123,"Address");
         //When
-        localDataSource.delete(user.dni);
-        localDataSource.save(user);
+        dataRepository.deleteUser(user.dni);
+        dataRepository.saveUser(user);
         //Then
         Mockito.verify(localDataSource,Mockito.times(1)).delete(user.dni);
         Mockito.verify(localDataSource,Mockito.times(1)).save(user);
