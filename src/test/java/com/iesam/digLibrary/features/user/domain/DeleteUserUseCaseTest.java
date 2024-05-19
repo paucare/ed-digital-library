@@ -1,5 +1,6 @@
 package com.iesam.digLibrary.features.user.domain;
 
+import com.iesam.digLibrary.features.exceptions.NotValidInputException;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -27,10 +28,24 @@ class DeleteUserUseCaseTest {
     @Test
     public void whenIdIsInputtedItDeletesTheModel(){
         //Given
-        String idForDeleting = "ABC123";
+        User userToDelete = new User("existingId", "Existing", "User", 123456789, "Address");
+        Mockito.when(repository.getUserById(userToDelete.dni)).thenReturn(userToDelete);
         //When
-        useCase.execute(idForDeleting);
+        useCase.execute(userToDelete.dni);
         //Then
-        Mockito.verify(repository,Mockito.times(1)).deleteUser(idForDeleting);
+        Mockito.verify(repository,Mockito.times(1)).deleteUser(userToDelete.dni);
     }
+
+    @Test
+    public void notExistingUserWithSaidIdDeletesNothing(){
+        //Given
+        User userToDelete = new User("existingId", "Existing", "User", 123456789, "Address");
+        Mockito.when(repository.getUserById(userToDelete.dni)).thenReturn(null);
+        //When
+        NotValidInputException e = assertThrows(NotValidInputException.class, () -> useCase.execute(userToDelete.dni));
+        //Then
+        Mockito.verify(repository,Mockito.times(0)).deleteUser(userToDelete.dni);
+
+    }
+
 }
