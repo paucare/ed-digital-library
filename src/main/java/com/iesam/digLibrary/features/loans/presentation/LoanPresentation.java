@@ -31,7 +31,7 @@ public class LoanPresentation {
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
         Date currentDate = new Date();
 
-        System.out.println("New loan form");
+        System.out.println("Formulario de nuevo prestamo");
         /* System.out.println("Introduce el id del prestamo: ");
         int id = sc.nextInt();
         sc.nextLine();
@@ -57,51 +57,51 @@ public class LoanPresentation {
         }
     }
     public static void deleteLoan(){
-    System.out.println("Enter the loan ID you want to delete");
+    System.out.println("Introduce el ID del prestamo a borrar");
     int idLoan=sc.nextInt();
     sc.nextLine();
         DeleteLoanUseCase useCase = new DeleteLoanUseCase(new LoanDataRepository(new LoanFileLocalDataSource()));
         useCase.execute(idLoan);
-        System.out.println("The loan with ID: " + idLoan + "was deleted");
+        System.out.println("Se ha borrado el prestamo con id: " + idLoan + " con exito");
     }
     public static void returnResourceToEndLoan(){
-        System.out.println("Introduce the resource ID you are returning: ");
-        int unchangedId = sc.nextInt();
+        System.out.println("Introduce el ID del prestamo cuyo recurso han devuelto: ");
+        long unchangedId = sc.nextLong();
         sc.nextLine();
         EndLoanUseCase useCase = new EndLoanUseCase(new LoanDataRepository(new LoanFileLocalDataSource()));
         useCase.execute(unchangedId);
-        System.out.println("Thanks for returning the resource!");
+        System.out.println("¡Gracias por devolver el recurso!");
 
     }
     public static void getActiveLoans(){
-        System.out.println("Next a list of all active loans will be shown: ");
+        System.out.println("A continuación se muestra una lista de los prestamos activos en nuestra biblioteca");
         GetActiveLoansUseCase useCase = new GetActiveLoansUseCase(new LoanDataRepository(new LoanFileLocalDataSource()));
         List<Loan> ListaActivos= useCase.execute();
         for(Loan element : ListaActivos){
-            System.out.println("ID | User | Resource | Loan date | Max. date of return");
+            System.out.println("ID | Usuario | Recurso | Fecha de Prestamo | Fecha tope de devolución");
             System.out.println(element.loanId + " | " + element.user.name + " | " + element.resource.name + " | " + element.loanDate + " | " + element.expectedDate);
         }
     }
     public static void getFinishedLoans(){
-        System.out.println("Next a list of all finished loans will be shown:");
+        System.out.println("A continuación se muestra una lista de los prestamos finalizados en nuestra biblioteca");
         GetFinishedLoansUseCase useCase = new GetFinishedLoansUseCase(new LoanDataRepository(new LoanFileLocalDataSource()));
         List<Loan> ListaFinalizados= useCase.execute();
         for(Loan element : ListaFinalizados){
-            System.out.println("ID | User | Loan | Loan Date | Returned Date");
+            System.out.println("ID | Usuario | Recurso | Fecha de Prestamo | Fecha de devolucion");
             System.out.println(element.loanId + " | " + element.user.name + " | " + element.resource.name + " | " + element.loanDate + " | " + element.returnedDate);
         }
     }
     public static void checkIfResourceIsLoaned() {
 
-        System.out.println("Check if the resoure is on a loan");
-        System.out.println("Enter the resource ID");
+        System.out.println("Comprueba si el recurso esta prestado");
+        System.out.println("Introduce el ID del libro a buscar");
         int searchId = sc.nextInt();
         CheckIfResourceIsLoanedUseCase useCase = new CheckIfResourceIsLoanedUseCase(new LoanDataRepository(new LoanFileLocalDataSource()));
         boolean condition = useCase.execute(searchId);
         if (condition) {
-            System.out.println("The resource is already loaned");
+            System.out.println("El libro se encuentra actualmente en un prestamo");
         } else {
-            System.out.println("The resource is currently available.");
+            System.out.println("El libro se encuentra disponible.");
         }
     }
 

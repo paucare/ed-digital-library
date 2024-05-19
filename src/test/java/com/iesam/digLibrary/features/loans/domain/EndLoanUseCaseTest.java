@@ -13,9 +13,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
@@ -38,52 +36,39 @@ class EndLoanUseCaseTest {
     public void whenGivenAModelItChangesItReturnedDateToCurrentDayAndThatEndsTheLoan(){
 
 
-        int bookId = 1;
+        long loanId = 1;
         User user = new User("123","Usuario","Apellido",123,"Adress");
         Resources book = new Books(1,"Book",2024,"Novela corta",100);
         Date loanDate = new Date();
         Date expectedDate = Loan.calculateExpectedDate(loanDate);
-        Loan loan = new Loan(book, user, loanDate, expectedDate, null);
-        Loan loan2 = new Loan(book,user,loanDate,expectedDate,loanDate);
+        Loan loan = new Loan(loanId, book, user, loanDate, expectedDate, null);
 
-        List<Loan> loans = new ArrayList<>();
-        loans.add(loan);
-        loans.add(loan2);
-
-        Mockito.when(repository.getLoans()).thenReturn(loans);
+        Mockito.when(repository.getLoanById(loanId)).thenReturn(loan);
 
         //When
-        useCase.execute(bookId);
+        useCase.execute(loanId);
 
         // Then
-        Mockito.verify(repository).deleteLoan(loan.loanId);
-
+        Mockito.verify(repository).deleteLoan(loanId);
         Mockito.verify(repository).saveLoan(any(Loan.class));
 
-        /*int bookId = 1;
+        /*
+        long loanId = 1;
         User user = new User("123","Usuario","Apellido",123,"Adress");
         Resources book = new Books(1,"Book",2024,"Novela corta",100);
         Date loanDate = new Date();
         Date expectedDate = Loan.calculateExpectedDate(loanDate);
-        Loan loan = new Loan(book, user, loanDate, expectedDate, null);
-        Loan loan2 = new Loan(book,user,loanDate,expectedDate,loanDate);
+        Loan loanToUpdate = new Loan(loanId, book, user, loanDate, expectedDate, null);
 
-        List<Loan> loans = new ArrayList<>();
-        loans.add(loan);
-        loans.add(loan2);
-
-        Mockito.when(repository.getLoans()).thenReturn(loans);
+        Mockito.when(repository.getLoanById(loanId)).thenReturn(loanToUpdate);
+        Loan loanToSave = new Loan(loanToUpdate.loanId,loanToUpdate.resource,loanToUpdate.user,loanToUpdate.loanDate,loanToUpdate.expectedDate,new Date());
 
         //When
-        useCase.execute(bookId);
-
+        useCase.execute(loanId);
         // Then
-        Mockito.verify(repository).deleteLoan(loan.loanId);
-
-        //Mockito.verify(repository).saveLoan(any(Loan.class));
-
-        Mockito.verify(repository).saveLoan(loan); */
-
+        Mockito.verify(repository).deleteLoan(loanId);
+        Mockito.verify(repository).saveLoan(loanToSave);
+        */
 
     }
 }
