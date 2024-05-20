@@ -34,4 +34,8 @@ public class UserDataRepository implements UserRepository {
         return  localDataSource.findById(id);
     }
 
+    @Override
+    public List<User> getAllUsers() {
+        return localDataSource.findAll();
+    }
 }
