@@ -3,7 +3,7 @@ package com.iesam.digLibrary.features.user.domain;
 
 
 public class SaveUserUseCase {
-    public final UserRepository repository;
+    private UserRepository repository;
 
     public SaveUserUseCase(UserRepository repository) {
         this.repository = repository;
