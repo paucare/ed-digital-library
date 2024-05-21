@@ -3,7 +3,7 @@ package com.iesam.digLibrary.features.user.domain;
 
 
 public class UpdateUserUseCase {
-    public final UserRepository repository;
+    private UserRepository repository;
 
     public UpdateUserUseCase(UserRepository repository) {
         this.repository = repository;

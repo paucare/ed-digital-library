@@ -3,7 +3,7 @@ package com.iesam.digLibrary.features.user.domain;
 import java.util.List;
 
 public class GetUsersUseCase {
-    public final UserRepository repository;
+    private UserRepository repository;
 
     public GetUsersUseCase(UserRepository repository) {
         this.repository = repository;

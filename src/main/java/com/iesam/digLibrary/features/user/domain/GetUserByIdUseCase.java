@@ -1,7 +1,7 @@
 package com.iesam.digLibrary.features.user.domain;
 
 public class GetUserByIdUseCase {
-    public final UserRepository repository;
+    private UserRepository repository;
 
     public GetUserByIdUseCase(UserRepository repository) {
         this.repository = repository;
