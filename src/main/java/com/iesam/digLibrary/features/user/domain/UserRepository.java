@@ -9,6 +9,7 @@ public interface UserRepository {
 
     public void updateUser(User user);
     public User getUserById(String id);
+    public List<User> getAllUsers();
 }
 
 

@@ -16,6 +16,8 @@ public class UserMenu implements Menu{
             System.out.println("1. Register an user");
             System.out.println("2. Delete an user");
             System.out.println("3. Update an user");
+            System.out.println("4. Get user information");
+            System.out.println("5. Show all users list");
             System.out.print("Enter an option: ");
 
     }
@@ -35,6 +37,12 @@ public class UserMenu implements Menu{
                     System.out.println("Next operation");
                     break;
                 case 3: UserPresentation.updateUser();
+                    System.out.println("Next operation");
+                    return;
+                case 4: UserPresentation.getUser();
+                    System.out.println("Next operation");
+                    return;
+                case 5: UserPresentation.getAllUsers();
                     System.out.println("Next operation");
                     return;
                 default:

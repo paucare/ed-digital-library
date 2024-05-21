@@ -40,7 +40,7 @@ public class UserFileLocalDataSource {
             myWriter.close();
 //            System.out.println("Datos guardados correctamente");
         } catch (IOException e) {
-            System.out.println("Ha ocurrido un error al guardar la información.");
+            System.out.println("An error occurred while saving the data");
             e.printStackTrace();
         }
     }
@@ -69,10 +69,10 @@ public class UserFileLocalDataSource {
             }
             myReader.close();
         } catch (FileNotFoundException e) {
-            System.out.println("Ha ocurrido un error al obtener el listado.");
+            System.out.println("An error occurred while retrieving the list.");
             e.printStackTrace();
         } catch (IOException e) {
-            System.out.println("Ha ocurrido un error al crear el fichero.");
+            System.out.println("An error occurred while creating the file.");
             throw new RuntimeException(e);
         }
         return new ArrayList<>();
