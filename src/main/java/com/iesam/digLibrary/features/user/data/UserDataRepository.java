@@ -10,9 +10,14 @@ import java.util.List;
 
 public class UserDataRepository implements UserRepository {
     private UserFileLocalDataSource localDataSource;
+    private UserMemLocalDataSource memLD;
 
     public UserDataRepository(UserFileLocalDataSource localDataSource) {
         this.localDataSource = localDataSource;
+    }
+    public UserDataRepository(UserFileLocalDataSource localDataSource, UserMemLocalDataSource memLD ) {
+        this.localDataSource = localDataSource;
+        this.memLD=memLD;
     }
 
     @Override

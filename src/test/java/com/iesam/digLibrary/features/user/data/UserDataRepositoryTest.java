@@ -1,6 +1,7 @@
 package com.iesam.digLibrary.features.user.data;
 
 import com.iesam.digLibrary.features.user.data.local.UserFileLocalDataSource;
+import com.iesam.digLibrary.features.user.data.local.UserMemLocalDataSource;
 import com.iesam.digLibrary.features.user.domain.User;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
@@ -12,11 +13,14 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
 
 @ExtendWith({MockitoExtension.class})
 class UserDataRepositoryTest {
     @Mock
     UserFileLocalDataSource localDataSource;
+    @Mock
+    UserMemLocalDataSource memLocalDataSource;
 
     UserDataRepository dataRepository;
     @BeforeEach
@@ -72,4 +76,25 @@ class UserDataRepositoryTest {
         Mockito.verify(localDataSource,Mockito.times(1)).delete(user.dni);
         Mockito.verify(localDataSource,Mockito.times(1)).save(user);
     }
+    @Test
+    public void givenUserExistsInMemory_whenGetUserById_thenFileDataSourceIsNotCalled(){
+
+        User user = new User("8001","User","Surname",123,"Address");
+
+        Mockito.when(memLocalDataSource.findById(any())).thenReturn(user);
+
+        dataRepository = new UserDataRepository(localDataSource,memLocalDataSource);
+
+        User userRetrieved = memLocalDataSource.findById("8001");
+
+        Mockito.verify(localDataSource, Mockito.times(0)).findById("8001");
+
+        Assertions.assertEquals(userRetrieved.dni,"8001");
+        Assertions.assertEquals(userRetrieved.name,"User");
+        Assertions.assertEquals(userRetrieved.surname,"Surname");
+        Assertions.assertEquals(userRetrieved.phoneNumber,123);
+        Assertions.assertEquals(userRetrieved.address,"Address");
+        dataRepository = null;
+    }
+
 }
