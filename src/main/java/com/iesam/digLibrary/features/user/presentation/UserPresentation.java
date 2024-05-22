@@ -59,22 +59,20 @@ public class UserPresentation {
         User updatedUser = new User(unchangedId, name, surname, phoneNumber, address);
         UpdateUserUseCase useCase = new UpdateUserUseCase(new UserDataRepository(new UserFileLocalDataSource()));
         useCase.execute(updatedUser);
-        System.out.println("The user with ID: " + unchangedId + " was deleted successfully");
-
+        System.out.println("The user with ID: " + unchangedId + " was updated successfully");
     }
-    public static void getUser(){
-        System.out.println("Enter the user's ID to search: ");
-        String id = sc.nextLine();
-        GetUserByIdUseCase useCase =  new GetUserByIdUseCase(new UserDataRepository(new UserFileLocalDataSource()));
-        User user = useCase.execute(id);
-        if(user!=null){
-        System.out.println("User info: ");
-        System.out.println("ID: " + user.dni + "Name: " + user.name + " Surname: " + user.surname);
-        } else {
-            System.out.println("User does not exist");
+        public static void getUser(){
+            System.out.println("Enter the user's ID to search: ");
+            String id = sc.nextLine();
+            GetUserByIdUseCase useCase =  new GetUserByIdUseCase(new UserDataRepository(new UserFileLocalDataSource()));
+            User user = useCase.execute(id);
+            if(user!=null){
+                System.out.println("User info: ");
+                System.out.println("ID: " + user.dni + "Name: " + user.name + " Surname: " + user.surname);
+            } else {
+                System.out.println("User does not exist");
+            }
         }
-    }
-
 
     public static void getAllUsers(){
         GetUsersUseCase useCase =  new GetUsersUseCase(new UserDataRepository(new UserFileLocalDataSource()));
@@ -88,4 +86,5 @@ public class UserPresentation {
             System.out.println("Currently we have no users");
         }
     }
+
 }
