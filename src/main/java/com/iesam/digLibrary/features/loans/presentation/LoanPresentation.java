@@ -90,7 +90,7 @@ public class LoanPresentation {
         List<Loan> finishedList= useCase.execute();
         for(Loan element : finishedList){
             System.out.println("     ID     |     User     |     Type - Resource     |     Loan date     |     Returned date");
-            System.out.println(element.loanId + " | " + element.user.name + element.user.surname + " | "  + element.resource.type + " " + element.resource.name + " | " + element.loanDate + " | " + element.returnedDate);
+            System.out.println(element.loanId + " | " + element.user.name + " " + element.user.surname + " | "  + element.resource.type + " " + element.resource.name + " | " + element.loanDate + " | " + element.returnedDate);
         }
     }
     public static void checkIfResourceIsLoaned() {
