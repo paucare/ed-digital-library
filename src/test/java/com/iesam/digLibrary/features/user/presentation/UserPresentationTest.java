@@ -118,9 +118,10 @@ class UserPresentationTest {
         String simulatedInput = "8001";
 
         //Comprobamos que el usuario que pedimos es el que es devuelto
+        /*
         User user = new User("8001","User","Surname",600800900,"Address");
         Mockito.when(repository.getUserById("8001")).thenReturn(user);
-        /*
+
         User userRetrieved = useCase.execute("8001");
         Assertions.assertEquals(userRetrieved.dni,"8001");
         Assertions.assertEquals(userRetrieved.name,"User");
