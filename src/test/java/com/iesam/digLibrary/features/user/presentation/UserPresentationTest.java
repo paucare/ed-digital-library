@@ -50,7 +50,7 @@ class UserPresentationTest {
         //Capturamos la entrada
         InputStream in = new ByteArrayInputStream(simulatedInput.getBytes());
         System.setIn(in);
-        presentation.sc = new Scanner(System.in);
+        UserPresentation.sc = new Scanner(System.in);
 
         presentation.showUserForm();
 
@@ -66,7 +66,7 @@ class UserPresentationTest {
         //Capturamos la entrada
         InputStream in = new ByteArrayInputStream(simulatedInput.getBytes());
         System.setIn(in);
-        presentation.sc = new Scanner(System.in);
+        UserPresentation.sc = new Scanner(System.in);
 
         presentation.deleteUserByDni();
 
@@ -85,7 +85,7 @@ class UserPresentationTest {
         //Capturamos la entrada
         InputStream in = new ByteArrayInputStream(simulatedInput.getBytes());
         System.setIn(in);
-        presentation.sc = new Scanner(System.in);
+        UserPresentation.sc = new Scanner(System.in);
 
         presentation.updateUser();
 
@@ -102,7 +102,7 @@ class UserPresentationTest {
         //Capturamos la entrada
         InputStream in = new ByteArrayInputStream(simulatedInput.getBytes());
         System.setIn(in);
-        presentation.sc = new Scanner(System.in);
+        UserPresentation.sc = new Scanner(System.in);
 
         presentation.getUser();
 
