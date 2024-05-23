@@ -80,7 +80,7 @@ public class LoanPresentation {
         GetActiveLoansUseCase useCase = new GetActiveLoansUseCase(new LoanDataRepository(new LoanFileLocalDataSource()));
         List<Loan> activeList= useCase.execute();
         for(Loan element : activeList){
-            System.out.println("     ID     |     User     |    TYPE - Resource     |     Loan date     |     Max. date of return");
+            System.out.println("     ID     |     User     |    Type - Resource     |     Loan date     |     Max. date of return");
             System.out.println(element.loanId + " | " + element.user.name + " " + element.user.surname + " | " + element.resource.type + " " + element.resource.name + " | " + element.loanDate + " | " + element.expectedDate);
         }
     }
@@ -89,7 +89,7 @@ public class LoanPresentation {
         GetFinishedLoansUseCase useCase = new GetFinishedLoansUseCase(new LoanDataRepository(new LoanFileLocalDataSource()));
         List<Loan> finishedList= useCase.execute();
         for(Loan element : finishedList){
-            System.out.println("     ID     |     User     |     TYPE - Resource     |     Loan date     |     Returned date");
+            System.out.println("     ID     |     User     |     Type - Resource     |     Loan date     |     Returned date");
             System.out.println(element.loanId + " | " + element.user.name + element.user.surname + " | "  + element.resource.type + " " + element.resource.name + " | " + element.loanDate + " | " + element.returnedDate);
         }
     }
