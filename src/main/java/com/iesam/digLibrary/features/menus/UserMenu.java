@@ -4,6 +4,7 @@ import com.iesam.digLibrary.features.user.presentation.UserPresentation;
 
 public class UserMenu implements Menu{
     public final MenuSystem menuSystem;
+    public final UserPresentation presentation = new UserPresentation();
 
     public UserMenu(MenuSystem menuSystem) {
         this.menuSystem = menuSystem;
@@ -30,19 +31,19 @@ public class UserMenu implements Menu{
                     System.out.println("Returning to main menu");
                     menuSystem.goBack();
                     break;
-                case 1: UserPresentation.showUserForm();
+                case 1: presentation.showUserForm();
                     System.out.println("Next operation");
                     break;
-                case 2: UserPresentation.deleteUserByDni();
+                case 2: presentation.deleteUserByDni();
                     System.out.println("Next operation");
                     break;
-                case 3: UserPresentation.updateUser();
+                case 3: presentation.updateUser();
                     System.out.println("Next operation");
                     return;
-                case 4: UserPresentation.getUser();
+                case 4: presentation.getUser();
                     System.out.println("Next operation");
                     return;
-                case 5: UserPresentation.getAllUsers();
+                case 5: presentation.getAllUsers();
                     System.out.println("Next operation");
                     return;
                 default:
