@@ -1,8 +1,5 @@
 package com.iesam.digLibrary.features.user.presentation;
 
-import com.iesam.digLibrary.features.loans.presentation.LoanPresentation;
-import com.iesam.digLibrary.features.user.data.*;
-import com.iesam.digLibrary.features.user.data.local.UserFileLocalDataSource;
 import com.iesam.digLibrary.features.user.domain.*;
 
 import java.util.List;
@@ -11,11 +8,11 @@ import java.util.Scanner;
 public class UserPresentation {
   
     static Scanner sc = new Scanner(System.in);
-    UserFactory factory = new UserFactory();
+    UseCasesUserFactory factory = new UseCasesUserFactory();
 
     public UserPresentation() {
     }
-    public UserPresentation(UserFactory factory){
+    public UserPresentation(UseCasesUserFactory factory){
         this.factory=factory;
     }
 

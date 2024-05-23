@@ -4,7 +4,7 @@ import com.iesam.digLibrary.features.user.data.UserDataRepository;
 import com.iesam.digLibrary.features.user.data.local.UserFileLocalDataSource;
 import com.iesam.digLibrary.features.user.domain.*;
 
-public class UserFactory {
+public class UseCasesUserFactory {
 
     UserDataRepository dataRepository = new UserDataRepository( new UserFileLocalDataSource());
 
