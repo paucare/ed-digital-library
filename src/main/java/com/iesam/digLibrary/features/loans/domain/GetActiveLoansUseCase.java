@@ -1,5 +1,7 @@
 package com.iesam.digLibrary.features.loans.domain;
 
+import com.iesam.digLibrary.features.loans.data.LoanDataRepository;
+
 import java.util.ArrayList;
 import java.util.List;
 
