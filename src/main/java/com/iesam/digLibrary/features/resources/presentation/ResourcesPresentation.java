@@ -31,7 +31,7 @@ public class ResourcesPresentation {
                 Books resourceBook = new Books(p.id,p.name, p.year, p.description, extension);
                 SaveBookUseCase useCaseBook = new SaveBookUseCase(new BooksDataRepository(new BooksFileLocalDataSource()));
                 useCaseBook.execute(resourceBook);
-                System.out.println("The book " + resourceBook.name + " was saved");
+                System.out.println("The CD " + resourceBook.name + " was saved");
                 return;
             case 2:
                 System.out.println("Number of songs: ");
@@ -40,7 +40,7 @@ public class ResourcesPresentation {
                 Music resourceMusic = new Music(p.id, p.name, p.year, p.description, numSongs);
                 SaveMusicUseCase useCaseMusic = new SaveMusicUseCase(new MusicDataRepository(new MusicFileLocalDataSource()));
                 useCaseMusic.execute(resourceMusic);
-                System.out.println("The book " + resourceMusic.name + " was saved");
+                System.out.println("The CD " + resourceMusic.name + " was saved");
                 return;
             default:
                 System.out.println("Please enter a valid option");

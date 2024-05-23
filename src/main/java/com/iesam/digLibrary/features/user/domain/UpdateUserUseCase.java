@@ -9,12 +9,6 @@ public class UpdateUserUseCase {
         this.repository = repository;
     }
     public void execute(User user){
-
-        User existingUser = repository.getUserById(user.dni);
-
-        if(existingUser != null){
             repository.updateUser(user);
-        }
-
     }
 }

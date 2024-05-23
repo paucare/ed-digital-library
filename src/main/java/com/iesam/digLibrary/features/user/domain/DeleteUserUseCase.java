@@ -8,10 +8,6 @@ public class DeleteUserUseCase {
     }
 
     public void execute(String dni) {
-
-        User existingUser = repository.getUserById(dni);
-        if(existingUser!=null) {
             repository.deleteUser(dni);
-        }
     }
 }

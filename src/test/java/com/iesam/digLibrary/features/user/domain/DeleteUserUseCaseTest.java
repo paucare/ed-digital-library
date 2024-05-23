@@ -28,23 +28,10 @@ class DeleteUserUseCaseTest {
     public void whenIdIsInputtedItDeletesTheModel(){
         //Given
         User userToDelete = new User("existingId", "Existing", "User", 123456789, "Address");
-        Mockito.when(repository.getUserById(userToDelete.dni)).thenReturn(userToDelete);
         //When
         useCase.execute(userToDelete.dni);
         //Then
         Mockito.verify(repository,Mockito.times(1)).deleteUser(userToDelete.dni);
-    }
-
-    @Test
-    public void notExistingUserWithSaidIdDeletesNothing(){
-        //Given
-        User userToDelete = new User("existingId", "Existing", "User", 123456789, "Address");
-        Mockito.when(repository.getUserById(userToDelete.dni)).thenReturn(null);
-        //When
-       useCase.execute(userToDelete.dni);
-        //Then
-        Mockito.verify(repository,Mockito.times(0)).deleteUser(userToDelete.dni);
-
     }
 
 }
