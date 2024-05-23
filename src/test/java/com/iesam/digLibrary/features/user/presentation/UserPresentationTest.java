@@ -52,12 +52,6 @@ class UserPresentationTest {
         System.setIn(in);
         presentation.sc = new Scanner(System.in);
 
-        //Capturamos la salida
-        /*
-        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outContent));
-         */
-
         presentation.showUserForm();
 
         Mockito.verify(factory, Mockito.times(1)).buildSaveUser();
@@ -73,12 +67,6 @@ class UserPresentationTest {
         InputStream in = new ByteArrayInputStream(simulatedInput.getBytes());
         System.setIn(in);
         presentation.sc = new Scanner(System.in);
-
-        //Capturamos la salida
-        /*
-        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outContent));
-         */
 
         presentation.deleteUserByDni();
 
@@ -99,12 +87,6 @@ class UserPresentationTest {
         System.setIn(in);
         presentation.sc = new Scanner(System.in);
 
-        //Capturamos la salida
-        /*
-        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outContent));
-         */
-
         presentation.updateUser();
 
         Mockito.verify(factory, Mockito.times(1)).buildUpdateUser();
@@ -117,30 +99,10 @@ class UserPresentationTest {
         Mockito.when(factory.buildGetUserById()).thenReturn(useCase);
         String simulatedInput = "8001";
 
-        //Comprobamos que el usuario que pedimos es el que es devuelto
-        /*
-        User user = new User("8001","User","Surname",600800900,"Address");
-        Mockito.when(repository.getUserById("8001")).thenReturn(user);
-
-        User userRetrieved = useCase.execute("8001");
-        Assertions.assertEquals(userRetrieved.dni,"8001");
-        Assertions.assertEquals(userRetrieved.name,"User");
-        Assertions.assertEquals(userRetrieved.surname,"Surname");
-        Assertions.assertEquals(userRetrieved.phoneNumber,600800900);
-        Assertions.assertEquals(userRetrieved.address,"Address");
-
-         */
-
         //Capturamos la entrada
         InputStream in = new ByteArrayInputStream(simulatedInput.getBytes());
         System.setIn(in);
         presentation.sc = new Scanner(System.in);
-
-        //Capturamos la salida
-        /*
-        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outContent));
-         */
 
         presentation.getUser();
 
@@ -149,11 +111,6 @@ class UserPresentationTest {
     }
     @Test
     public void testGetAllUser_CallsFactoryCorrectly(){
-        /*
-        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outContent));
-
-         */
 
         GetUsersUseCase useCase = new GetUsersUseCase(repository);
 
