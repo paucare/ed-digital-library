@@ -32,10 +32,6 @@ public class LoanPresentation {
         Date currentDate = new Date();
 
         System.out.println("New loan form");
-        /* System.out.println("Introduce el id del prestamo: ");
-        int id = sc.nextInt();
-        sc.nextLine();
-        */
         System.out.println("Enter the user ID: ");
         String userId = sc.nextLine();
 
