@@ -41,6 +41,8 @@ class UserPresentationTest {
 
     @AfterEach
     void tearDown() {
+        presentation = null;
+        useCase = null;
     }
 
     @Test
