@@ -44,7 +44,9 @@ public class UserDataRepository implements UserRepository {
 
         if(user==null){
             user = localDataSource.findById(id);
-            UserMemLocalDataSource.getInstance().save(user);
+            if(user!=null) {
+                UserMemLocalDataSource.getInstance().save(user);
+            }
         }
         return user;
     }
@@ -56,8 +58,10 @@ public class UserDataRepository implements UserRepository {
 
         if(userList.isEmpty()) {
             userList = localDataSource.findAll();
-            for ( User element: userList){
-                UserMemLocalDataSource.getInstance().save(element);
+            if(!userList.isEmpty()) {
+                for (User element : userList) {
+                    UserMemLocalDataSource.getInstance().save(element);
+                }
             }
         }
             return userList;

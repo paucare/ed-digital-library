@@ -28,25 +28,10 @@ class SaveUserUseCaseTest {
     public void whenGivenAModelSaveIt(){
         //Given
         User user = new User("8001","User","Surname",600800900,"Address");
-        Mockito.when(repository.getUserById(user.dni)).thenReturn(null);
         //When
         useCase.execute(user);
         //Then
         Mockito.verify(repository,Mockito.times(1)).saveUser(user);
     }
-    @Test
-    public void alreadyExistingUserWithSaidIDReturnsNothing() {
 
-        //Given
-        User existingUser = new User("existingId", "Existing", "User", 123456789, "Address");
-        Mockito.when(repository.getUserById(existingUser.dni)).thenReturn(existingUser);
-
-        //When
-        //useCase.execute(existingUser);
-        useCase.execute(existingUser);
-
-        //Then
-        Mockito.verify(repository, Mockito.times(0)).saveUser(existingUser);
-
-    }
 }

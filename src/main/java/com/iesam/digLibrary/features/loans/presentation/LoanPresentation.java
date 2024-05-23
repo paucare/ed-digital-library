@@ -35,21 +35,27 @@ public class LoanPresentation {
         System.out.println("Enter the user ID: ");
         String userId = sc.nextLine();
 
-
-        System.out.println("What kind of resource will you loan? 1.Book 2.CD");
-        int option = sc.nextInt();
-        sc.nextLine();
-
         GetUserByIdUseCase useCaseUser = new GetUserByIdUseCase(new UserDataRepository(new UserFileLocalDataSource()));
         User selectedUser = useCaseUser.execute(userId);
-        switch (option) {
-            case 1: handleBookLoan(selectedUser,currentDate,formatter);
-                return;
-            case 2: handleMusicLoan(selectedUser,currentDate,formatter);
-                return;
-            default:
-                System.out.println("Enter a valid option,please.");
-                break;
+
+        if(selectedUser==null){
+            System.out.println("That user does not exist. Try again");
+        } else {
+
+            System.out.println("What kind of resource will you loan? 1.Book 2.CD");
+            int option = sc.nextInt();
+            sc.nextLine();
+            switch (option) {
+                case 1:
+                    createBookLoan(selectedUser, currentDate, formatter);
+                    return;
+                case 2:
+                    createMusicLoan(selectedUser, currentDate, formatter);
+                    return;
+                default:
+                    System.out.println("Enter a valid option,please.");
+                    break;
+            }
         }
     }
     public static void deleteLoan(){
@@ -72,24 +78,24 @@ public class LoanPresentation {
     public static void getActiveLoans(){
         System.out.println("Next a list of all active loans will be shown: ");
         GetActiveLoansUseCase useCase = new GetActiveLoansUseCase(new LoanDataRepository(new LoanFileLocalDataSource()));
-        List<Loan> ListaActivos= useCase.execute();
-        for(Loan element : ListaActivos){
-            System.out.println("ID | User | Resource | Loan date | Max. date of return");
-            System.out.println(element.loanId + " | " + element.user.name + " | " + element.resource.name + " | " + element.loanDate + " | " + element.expectedDate);
+        List<Loan> activeList= useCase.execute();
+        for(Loan element : activeList){
+            System.out.println("     ID     |     User     |     Resource     |     Loan date     |     Max. date of return");
+            System.out.println(element.loanId + " | " + element.user.name + element.user.surname + " | " + element.resource.name + " | " + element.loanDate + " | " + element.expectedDate);
         }
     }
     public static void getFinishedLoans(){
         System.out.println("Next a list of all finished loans will be shown:");
         GetFinishedLoansUseCase useCase = new GetFinishedLoansUseCase(new LoanDataRepository(new LoanFileLocalDataSource()));
-        List<Loan> ListaFinalizados= useCase.execute();
-        for(Loan element : ListaFinalizados){
-            System.out.println("ID | User | Loan | Loan Date | Returned Date");
-            System.out.println(element.loanId + " | " + element.user.name + " | " + element.resource.name + " | " + element.loanDate + " | " + element.returnedDate);
+        List<Loan> finishedList= useCase.execute();
+        for(Loan element : finishedList){
+            System.out.println("     ID     |     User     |     Resource     |     Loan date     |     Max. date of return");
+            System.out.println(element.loanId + " | " + element.user.name + element.user.surname + " | " + element.resource.name + " | " + element.loanDate + " | " + element.returnedDate);
         }
     }
     public static void checkIfResourceIsLoaned() {
 
-        System.out.println("Check if the resoure is on a loan");
+        System.out.println("Check if the resource is on a loan");
         System.out.println("Enter the resource ID");
         int searchId = sc.nextInt();
         CheckIfResourceIsLoanedUseCase useCase = new CheckIfResourceIsLoanedUseCase(new LoanDataRepository(new LoanFileLocalDataSource()));
@@ -101,7 +107,7 @@ public class LoanPresentation {
         }
     }
 
-    private static void handleBookLoan(User selectedUser, Date currentDate, SimpleDateFormat formatter) {
+    private static void createBookLoan(User selectedUser, Date currentDate, SimpleDateFormat formatter) {
         System.out.println("Enter book id: ");
         int bookId = sc.nextInt();
         sc.nextLine();
@@ -121,7 +127,7 @@ public class LoanPresentation {
 
         System.out.println("Loan with id: " + loan.loanId + " was saved");
     }
-    private static void handleMusicLoan(User selectedUser, Date currentDate, SimpleDateFormat formatter) {
+    private static void createMusicLoan(User selectedUser, Date currentDate, SimpleDateFormat formatter) {
         System.out.println("Enter CD id: ");
         int musicId = sc.nextInt();
         sc.nextLine();

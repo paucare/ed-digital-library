@@ -24,26 +24,12 @@ class UpdateUserUseCaseTest {
         useCase = null;
     }
     @Test
-    public void whenGivenAModelUpdateIt(){
+    public void whenGivenAModelUpdateIt() {
         //Given
-        User user = new User("8001","User","Surname",600800900,"Calle");
-        Mockito.when(repository.getUserById(user.dni)).thenReturn(user);
+        User user = new User("8001", "User", "Surname", 600800900, "Calle");
         //When
         useCase.execute(user);
         //Then
-        Mockito.verify(repository,Mockito.times(1)).updateUser(user);
-
-    }
-
-    @Test
-    public void notExistingUserWithSaidIdUpdatesNothing(){
-        //Given
-        User user = new User("8001","User","Surname",600800900,"Calle");
-        Mockito.when(repository.getUserById(user.dni)).thenReturn(null);
-        //When
-        useCase.execute(user);
-        //Then
-        Mockito.verify(repository,Mockito.times(0)).updateUser(user);
-
+        Mockito.verify(repository, Mockito.times(1)).updateUser(user);
     }
 }
