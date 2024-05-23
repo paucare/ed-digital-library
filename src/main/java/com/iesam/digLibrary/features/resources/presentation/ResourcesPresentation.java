@@ -6,25 +6,22 @@ import com.iesam.digLibrary.features.resources.domain.Resources;
 import com.iesam.digLibrary.features.resources.books.data.local.BooksFileLocalDataSource;
 import com.iesam.digLibrary.features.resources.books.domain.*;
 import com.iesam.digLibrary.features.resources.books.data.*;
+import com.iesam.digLibrary.features.resources.domain.resourceType;
 import com.iesam.digLibrary.features.resources.music.data.MusicDataRepository;
 import com.iesam.digLibrary.features.resources.music.data.local.MusicFileLocalDataSource;
 import com.iesam.digLibrary.features.resources.music.domain.*;
-import com.iesam.digLibrary.features.user.data.UserDataRepository;
-import com.iesam.digLibrary.features.user.data.local.UserFileLocalDataSource;
-import com.iesam.digLibrary.features.user.domain.UpdateUserUseCase;
-import com.iesam.digLibrary.features.user.domain.User;
 
 
 public class ResourcesPresentation {
     static Scanner sc = new Scanner(System.in);
     public static void showResourceForm(){
-        Resources p = showBasicData();
         System.out.println("What kind of resource is? 1.Books 2.CD");
         int option = sc.nextInt();
         sc.nextLine();
-        switch (option) {
 
+        switch (option) {
             case 1:
+                Resources p = showBasicData(option);
                 System.out.println("Number of pages: ");
                 int extension = sc.nextInt();
                 sc.nextLine();
@@ -34,10 +31,11 @@ public class ResourcesPresentation {
                 System.out.println("The CD " + resourceBook.name + " was saved");
                 return;
             case 2:
+                Resources t = showBasicData(option);
                 System.out.println("Number of songs: ");
                 int numSongs = sc.nextInt();
                 sc.nextLine();
-                Music resourceMusic = new Music(p.id, p.name, p.year, p.description, numSongs);
+                Music resourceMusic = new Music(t.id, t.name, t.year, t.description, numSongs);
                 SaveMusicUseCase useCaseMusic = new SaveMusicUseCase(new MusicDataRepository(new MusicFileLocalDataSource()));
                 useCaseMusic.execute(resourceMusic);
                 System.out.println("The CD " + resourceMusic.name + " was saved");
@@ -47,6 +45,7 @@ public class ResourcesPresentation {
                 break;
         }
     }
+
     public static void deleteResourceById(){
         System.out.println("What kind of resource you want to delete? 1.Books 2.Music");
         int option = sc.nextInt();
@@ -80,7 +79,7 @@ public class ResourcesPresentation {
         switch (option){
             case 1:
                 System.out.println("Enter the book id to update");
-                Resources p = showUpdateForm();
+                Resources p = showUpdateForm(option);
                 System.out.println("Number of pages: ");
                 int extension = sc.nextInt();
                 sc.nextLine();
@@ -91,7 +90,7 @@ public class ResourcesPresentation {
                 return;
             case 2:
                 System.out.println("Enter the CD id to update");
-                Resources t = showUpdateForm();
+                Resources t = showUpdateForm(option);
                 System.out.println("Number of songs: ");
                 int numSongs = sc.nextInt();
                 sc.nextLine();
@@ -131,7 +130,7 @@ public class ResourcesPresentation {
                 break;
         }
     }
-    public static Resources showBasicData(){
+    public static Resources showBasicData(int option) {
         System.out.println("Introduce the digital resource basic data you want to create");
         System.out.println("ID: ");
         int id = sc.nextInt();
@@ -143,11 +142,14 @@ public class ResourcesPresentation {
         sc.nextLine();
         System.out.println("Description: ");
         String description = sc.nextLine();
-
-        Resources r = new Resources(id,name,year,description);
-        return r;
+        return switch (option) {
+            case 1 -> new Resources(resourceType.BOOK, id, name, year, description);
+            case 2 -> new Resources(resourceType.MUSIC, id, name, year, description);
+            default -> null;
+        };
     }
-    public static Resources showUpdateForm(){
+
+    public static Resources showUpdateForm(int option){
         int unchangedId = sc.nextInt();
         sc.nextLine();
         System.out.println("Name: ");
@@ -157,8 +159,11 @@ public class ResourcesPresentation {
         sc.nextLine();
         System.out.println("Description: ");
         String description = sc.nextLine();
-        Resources r= new Resources(unchangedId,name,year,description);
-        return r;
+        return switch (option) {
+            case 1 -> new Resources(resourceType.BOOK, unchangedId, name, year, description);
+            case 2 -> new Resources(resourceType.MUSIC, unchangedId, name, year, description);
+            default -> null;
+        };
     }
 }
 

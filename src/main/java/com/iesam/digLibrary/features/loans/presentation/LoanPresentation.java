@@ -80,8 +80,8 @@ public class LoanPresentation {
         GetActiveLoansUseCase useCase = new GetActiveLoansUseCase(new LoanDataRepository(new LoanFileLocalDataSource()));
         List<Loan> activeList= useCase.execute();
         for(Loan element : activeList){
-            System.out.println("     ID     |     User     |     Resource     |     Loan date     |     Max. date of return");
-            System.out.println(element.loanId + " | " + element.user.name + element.user.surname + " | " + element.resource.name + " | " + element.loanDate + " | " + element.expectedDate);
+            System.out.println("     ID     |     User     |    TYPE - Resource     |     Loan date     |     Max. date of return");
+            System.out.println(element.loanId + " | " + element.user.name + " " + element.user.surname + " | " + element.resource.type + " " + element.resource.name + " | " + element.loanDate + " | " + element.expectedDate);
         }
     }
     public static void getFinishedLoans(){
@@ -89,8 +89,8 @@ public class LoanPresentation {
         GetFinishedLoansUseCase useCase = new GetFinishedLoansUseCase(new LoanDataRepository(new LoanFileLocalDataSource()));
         List<Loan> finishedList= useCase.execute();
         for(Loan element : finishedList){
-            System.out.println("     ID     |     User     |     Resource     |     Loan date     |     Max. date of return");
-            System.out.println(element.loanId + " | " + element.user.name + element.user.surname + " | " + element.resource.name + " | " + element.loanDate + " | " + element.returnedDate);
+            System.out.println("     ID     |     User     |     TYPE - Resource     |     Loan date     |     Returned date");
+            System.out.println(element.loanId + " | " + element.user.name + element.user.surname + " | "  + element.resource.type + " " + element.resource.name + " | " + element.loanDate + " | " + element.returnedDate);
         }
     }
     public static void checkIfResourceIsLoaned() {
@@ -106,7 +106,6 @@ public class LoanPresentation {
             System.out.println("The resource is currently available.");
         }
     }
-
     private static void createBookLoan(User selectedUser, Date currentDate, SimpleDateFormat formatter) {
         System.out.println("Enter book id: ");
         int bookId = sc.nextInt();
