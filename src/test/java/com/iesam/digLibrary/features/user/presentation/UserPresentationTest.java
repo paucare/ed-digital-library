@@ -52,7 +52,7 @@ class UserPresentationTest {
         System.setIn(in);
         UserPresentation.sc = new Scanner(System.in);
 
-        presentation.showUserForm();
+        UserPresentation.showUserForm();
 
         Mockito.verify(factory, Mockito.times(1)).buildSaveUser();
     }
@@ -68,7 +68,7 @@ class UserPresentationTest {
         System.setIn(in);
         UserPresentation.sc = new Scanner(System.in);
 
-        presentation.deleteUserByDni();
+        UserPresentation.deleteUserByDni();
 
         Mockito.verify(factory, Mockito.times(1)).buildDeleteUser();
 
@@ -87,7 +87,7 @@ class UserPresentationTest {
         System.setIn(in);
         UserPresentation.sc = new Scanner(System.in);
 
-        presentation.updateUser();
+        UserPresentation.updateUser();
 
         Mockito.verify(factory, Mockito.times(1)).buildUpdateUser();
     }
@@ -104,7 +104,7 @@ class UserPresentationTest {
         System.setIn(in);
         UserPresentation.sc = new Scanner(System.in);
 
-        presentation.getUser();
+        UserPresentation.getUser();
 
         Mockito.verify(factory, Mockito.times(1)).buildGetUserById();
 
@@ -116,7 +116,7 @@ class UserPresentationTest {
 
         Mockito.when(factory.buildGetAllUsers()).thenReturn(useCase);
 
-        presentation.getAllUsers();
+        UserPresentation.getAllUsers();
 
         Mockito.verify(factory, Mockito.times(1)).buildGetAllUsers();
 

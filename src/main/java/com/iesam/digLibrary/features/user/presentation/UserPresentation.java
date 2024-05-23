@@ -8,15 +8,13 @@ import java.util.Scanner;
 public class UserPresentation {
   
     static Scanner sc = new Scanner(System.in);
-    UseCasesUserFactory factory = new UseCasesUserFactory();
+    static UseCasesUserFactory factory = new UseCasesUserFactory();
 
-    public UserPresentation() {
-    }
     public UserPresentation(UseCasesUserFactory factory){
-        this.factory=factory;
+        UserPresentation.factory =factory;
     }
 
-    public void showUserForm(){
+    public static void showUserForm(){
 
         System.out.println("New user form");
         System.out.println("Enter the ID: ");
@@ -39,7 +37,7 @@ public class UserPresentation {
 
     }
 
-    public void deleteUserByDni(){
+    public static void deleteUserByDni(){
         System.out.println("Enter the users' ID to delete: ");
         String dni = sc.nextLine();
         //DeleteUserUseCase useCase = new DeleteUserUseCase(new UserDataRepository(new UserFileLocalDataSource()));
@@ -48,7 +46,7 @@ public class UserPresentation {
         System.out.println("The user with ID: " + dni + " was deleted successfully");
     }
 
-    public void updateUser() {
+    public static void updateUser() {
 
         System.out.println("Enter the user's ID to delete");
         String unchangedId = sc.nextLine();
@@ -69,7 +67,7 @@ public class UserPresentation {
         useCase.execute(updatedUser);
         System.out.println("The user with ID: " + unchangedId + " was updated successfully");
     }
-        public void getUser(){
+        public static void getUser(){
             System.out.println("Enter the user's ID to search: ");
             String id = sc.nextLine();
             //GetUserByIdUseCase useCase =  new GetUserByIdUseCase(new UserDataRepository(new UserFileLocalDataSource()));
@@ -83,7 +81,7 @@ public class UserPresentation {
             }
         }
 
-    public void getAllUsers(){
+    public static void getAllUsers(){
         //GetUsersUseCase useCase =  new GetUsersUseCase(new UserDataRepository(new UserFileLocalDataSource()));
         GetUsersUseCase useCase = factory.buildGetAllUsers();
         List<User> userList = useCase.execute();
