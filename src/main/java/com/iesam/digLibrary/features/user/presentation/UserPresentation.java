@@ -11,9 +11,12 @@ import java.util.Scanner;
 public class UserPresentation {
   
     static Scanner sc = new Scanner(System.in);
-    final UserFactory factory = new UserFactory();
+    UserFactory factory = new UserFactory();
 
     public UserPresentation() {
+    }
+    public UserPresentation(UserFactory factory){
+        this.factory=factory;
     }
 
     public void showUserForm(){
