@@ -27,7 +27,7 @@ public class UserMenu implements Menu{
 
             switch (choice) {
                 case 0:
-                    System.out.println("Returning to main menu");
+                    System.out.println("Returning to main menu...");
                     menuSystem.goBack();
                     break;
                 case 1: UserPresentation.showUserForm();
