@@ -35,7 +35,7 @@ allowing access to the management options and navigation back and forth through 
   - In the user model, I modified the `getUser` and `getAllUsers` methods to first check the cache. 
 If the data is not found there, they look to retrieve it from files.
 - **Testing**
-- Added a total of 42 tests covering all use cases for all models.
+  - Added a total of 42 tests covering all use cases for all models.
  Additionally, the user model tests include the data layer and the presentation layer.
 
 As of 25/05/2024 the program works as intended and passes all tests
