@@ -26,7 +26,7 @@ As the project progressed, I implemented additional functionalities such as:
 - **Support for Multiple Resource Types**
   - Initially, only books were supported. I extended the catalog to include music and designed the program to allow future expansion to other types of digital resources.
 - **Events Model**
-  - A new model desgined specifically to try from moving stored data in cache to files, applying the open-close principle from SOLID.
+  - A new model desgined specifically to try moving stored data in cache to files, applying the open-close principle from SOLID.
 - **Dynamic Menus**
   - Using an interface to develop a main menu and separate menus for each model, allowing access to the management options and navigation back and forth through the menus.
 - **Enhanced Data Access Logic**
