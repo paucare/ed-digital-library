@@ -21,7 +21,7 @@ public class ResourcesPresentation {
 
         switch (option) {
             case 1:
-                Resources p = showBasicData(option);
+                Resources p = showBasicData();
                 System.out.println("Number of pages: ");
                 int extension = sc.nextInt();
                 sc.nextLine();
@@ -31,7 +31,7 @@ public class ResourcesPresentation {
                 System.out.println("The CD " + resourceBook.name + " was saved");
                 return;
             case 2:
-                Resources t = showBasicData(option);
+                Resources t = showBasicData();
                 System.out.println("Number of songs: ");
                 int numSongs = sc.nextInt();
                 sc.nextLine();
@@ -79,7 +79,7 @@ public class ResourcesPresentation {
         switch (option){
             case 1:
                 System.out.println("Enter the book id to update");
-                Resources p = showUpdateForm(option);
+                Resources p = showUpdateForm();
                 System.out.println("Number of pages: ");
                 int extension = sc.nextInt();
                 sc.nextLine();
@@ -90,7 +90,7 @@ public class ResourcesPresentation {
                 return;
             case 2:
                 System.out.println("Enter the CD id to update");
-                Resources t = showUpdateForm(option);
+                Resources t = showUpdateForm();
                 System.out.println("Number of songs: ");
                 int numSongs = sc.nextInt();
                 sc.nextLine();
@@ -130,7 +130,7 @@ public class ResourcesPresentation {
                 break;
         }
     }
-    public static Resources showBasicData(int option) {
+    public static Resources showBasicData() {
         System.out.println("Introduce the digital resource basic data you want to create");
         System.out.println("ID: ");
         int id = sc.nextInt();
@@ -142,14 +142,15 @@ public class ResourcesPresentation {
         sc.nextLine();
         System.out.println("Description: ");
         String description = sc.nextLine();
-        return switch (option) {
-            case 1 -> new Resources(resourceType.BOOK, id, name, year, description);
-            case 2 -> new Resources(resourceType.MUSIC, id, name, year, description);
-            default -> null;
-        };
+        // The type assigned to the resource here does not matter
+        // as we will not use this attribute to create the new book/CD above.
+        // Its own constructor will determine the type.
+        return new Resources(resourceType.BOOK, id, name, year, description);
+
+
     }
 
-    public static Resources showUpdateForm(int option){
+    public static Resources showUpdateForm(){
         int unchangedId = sc.nextInt();
         sc.nextLine();
         System.out.println("Name: ");
@@ -159,11 +160,10 @@ public class ResourcesPresentation {
         sc.nextLine();
         System.out.println("Description: ");
         String description = sc.nextLine();
-        return switch (option) {
-            case 1 -> new Resources(resourceType.BOOK, unchangedId, name, year, description);
-            case 2 -> new Resources(resourceType.MUSIC, unchangedId, name, year, description);
-            default -> null;
-        };
+        // The type assigned to the resource here does not matter
+        // as we will not use this attribute to create the new book/CD above.
+        // Its own constructor will determine the type.
+        return new Resources(resourceType.BOOK, unchangedId, name, year, description);
     }
 }
 
