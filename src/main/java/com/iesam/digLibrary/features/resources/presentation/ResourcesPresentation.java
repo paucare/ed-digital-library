@@ -28,7 +28,7 @@ public class ResourcesPresentation {
                 Books resourceBook = new Books(p.id,p.name, p.year, p.description, extension);
                 SaveBookUseCase useCaseBook = new SaveBookUseCase(new BooksDataRepository(new BooksFileLocalDataSource()));
                 useCaseBook.execute(resourceBook);
-                System.out.println("The CD " + resourceBook.name + " was saved");
+                System.out.println("The book " + resourceBook.name + " was saved");
                 return;
             case 2:
                 Resources t = showBasicData();
