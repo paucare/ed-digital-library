@@ -27,14 +27,14 @@ As the project progressed, I implemented additional functionalities such as:
   - Initially, only books were supported. I extended the catalog to include music and designed the program to allow future expansion to other types of digital resources.
 - **Events Model**
   - A new model desgined speifically to try from moving stored data in cache to files, applying the open-close principle from SOLID.
--**Dynamic Menus**
+- **Dynamic Menus**
   - Using an interface to develop a main menu and separate menus for each model, allowing access to the management options and navigation back and forth through the menus.
--**Enhanced Data Access Logic**
+- **Enhanced Data Access Logic**
   - In the user model, I modified the `getUser` and `getAllUsers` methods to first check the cache. If the data is not found there, they look to retrieve it from files.
 - **Testing**
   - Added a total of 42 tests covering all use cases for all models.
  Additionally, the user model tests include the data layer and the presentation layer.
 
-As of 25/05/2024 the program works as intended and passes all tests
+As of 25/05/2024 the program works as intended and passes all tests.
 ![finaltesting](https://github.com/paucare/ed-digital-library/assets/146753377/ab1c78b1-5e2c-4a32-9d77-1bf17f89218f)
 ![prestamofinal](https://github.com/paucare/ed-digital-library/assets/146753377/9c9950c3-668b-43e2-8cc0-d77858f045d4)
