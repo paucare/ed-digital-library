@@ -68,10 +68,10 @@ public class LoanPresentation {
     }
     public static void returnResourceToEndLoan(){
         System.out.println("Introduce the resource ID you are returning: ");
-        int unchangedId = sc.nextInt();
+        int id = sc.nextInt();
         sc.nextLine();
         EndLoanUseCase useCase = new EndLoanUseCase(new LoanDataRepository(new LoanFileLocalDataSource()));
-        useCase.execute(unchangedId);
+        useCase.execute(id);
         System.out.println("Thanks for returning the resource!");
 
     }

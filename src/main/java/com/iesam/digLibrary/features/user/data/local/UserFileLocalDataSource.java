@@ -38,9 +38,8 @@ public class UserFileLocalDataSource {
             FileWriter myWriter = new FileWriter(nameFile);
             myWriter.write(gson.toJson(models));
             myWriter.close();
-//            System.out.println("Datos guardados correctamente");
         } catch (IOException e) {
-            System.out.println("An error occurred while saving the data");
+            System.out.println("An error occurred while saving the data.");
             e.printStackTrace();
         }
     }
